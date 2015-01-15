@@ -5,6 +5,11 @@
 
 #import "RBSWorldViewController.h"
 
+@interface RBSWorldViewController () {
+
+    IBOutlet UIImageView *splashscreenBgViewer;
+}
+@end
 
 @implementation RBSWorldViewController {
 
