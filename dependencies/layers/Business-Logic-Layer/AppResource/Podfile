@@ -1,0 +1,38 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, 7.0
+
+
+target 'RBSWorldIPad', :exclusive => true do
+
+  pod 'AsyncDisplayKit', :git => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit'
+
+  pod 'Reveal-iOS-SDK', '~> 111.1.1'
+  pod 'pop', '~> 111.1.1'
+  pod 'SDWebImage', '~> 111.1.1'
+
+  pod 'Regexer', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
+  pod 'AFNetworking', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'
+  pod 'ISMemoryCache', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/ISMemoryCache'
+
+  # ________________collect common library___________________
+  pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"
+
+  # ________________Project layers___________________
+  pod "Business-Logic-Layer", :path => "../dependencies/layers/Business-Logic-Layer"
+
+  # ________________Projects for iPad___________________
+  # ________________module Projects___________________
+  pod "UI_Login_Layer", :path => "../dependencies/layers/UI_Login_Layer"
+
+end
+
+target 'RBSWorldIPadTests', :exclusive => true do
+
+  # pod 'OCMockito', '~> 1.0'
+
+  #pod 'OCHamcrest', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCHamcrest'
+  #pod 'OCMockito', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
+
+
+end

@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'UI_Login_Layer', :exclusive => true do
+  pod "UI_Login_Layer", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "UI_Login_Layer", :path => "../"
+
+  pod 'Kiwi'
+  pod 'FBSnapshotTestCase'
+end
