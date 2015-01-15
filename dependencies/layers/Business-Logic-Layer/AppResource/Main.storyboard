@@ -16,11 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default-Landscape.png" translatesAutoresizingMaskIntoConstraints="NO" id="zXa-sw-0Lb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default-Landscape.png" translatesAutoresizingMaskIntoConstraints="NO" id="zXa-sw-0Lb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="zXa-sw-0Lb" secondAttribute="centerX" id="9K1-MU-wyS"/>
+                            <constraint firstAttribute="trailing" secondItem="zXa-sw-0Lb" secondAttribute="trailing" id="EcO-2o-coJ"/>
+                            <constraint firstItem="zXa-sw-0Lb" firstAttribute="top" secondItem="EtK-Pg-woC" secondAttribute="top" id="Q1R-9D-36U"/>
+                            <constraint firstAttribute="centerY" secondItem="zXa-sw-0Lb" secondAttribute="centerY" id="d2U-kN-YBo"/>
+                            <constraint firstItem="zXa-sw-0Lb" firstAttribute="leading" secondItem="EtK-Pg-woC" secondAttribute="leading" id="qv0-Qg-6ak"/>
+                            <constraint firstAttribute="bottom" secondItem="zXa-sw-0Lb" secondAttribute="bottom" id="yHU-LR-Skm"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="splashscreenBgViewer" destination="zXa-sw-0Lb" id="e4n-3n-nhg"/>
