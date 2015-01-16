@@ -11,13 +11,13 @@
 
 
 @interface LoginViewController () {
-   LoginView * _loginView;
+    LoginView *_loginView;
 }
 @end
 
 
 @interface LoginViewController ()
-@property(strong, nonatomic) IBOutlet UIView * mLogViewPanel;
+@property (strong, nonatomic) IBOutlet UIView *mLogViewPanel;
 
 @end
 
@@ -25,31 +25,37 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
-   [super viewDidLoad];
-   // Do any additional setup after loading the view from its nib.
-   _loginView = [[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil][0];
-   [self.mLogViewPanel addSubview:_loginView];
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    _loginView = [[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil][0];
+    [self.mLogViewPanel addSubview:_loginView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 
 - (void)didReceiveMemoryWarning {
-   [super didReceiveMemoryWarning];
-   // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 
 - (BOOL)shouldAutorotate {
-   return YES;
+    return YES;
 }
 
 
 - (NSUInteger)supportedInterfaceOrientations {
-   return UIInterfaceOrientationMaskAll;
+    return UIInterfaceOrientationMaskAll;
 }
 
 
 - (void)viewWillLayoutSubviews {
-   [super viewWillLayoutSubviews];
+    [super viewWillLayoutSubviews];
 }
 
 

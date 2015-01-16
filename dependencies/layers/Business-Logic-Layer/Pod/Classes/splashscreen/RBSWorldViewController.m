@@ -4,6 +4,7 @@
 //
 
 #import "RBSWorldViewController.h"
+#import "LoginViewController.h"
 
 @interface RBSWorldViewController () {
 
@@ -13,6 +14,24 @@
 
 @implementation RBSWorldViewController {
 
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [self performSelector:@selector(gotoDashboard:) withObject:self afterDelay:1.0];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)gotoDashboard:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [self.navigationController pushViewController:loginViewController animated:NO];
 }
 
 - (void)viewDidLayoutSubviews {
