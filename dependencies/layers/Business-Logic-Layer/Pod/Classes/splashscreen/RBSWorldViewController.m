@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self performSelector:@selector(gotoDashboard:) withObject:self afterDelay:1.0];
+    [self performSelector:@selector(gotoDashboard:) withObject:self afterDelay:6.0];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -29,9 +29,8 @@
 }
 
 - (void)gotoDashboard:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-    [self.navigationController pushViewController:loginViewController animated:NO];
+    LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
+    [self.navigationController pushViewController:loginViewController animated:YES];
 }
 
 - (void)viewDidLayoutSubviews {
