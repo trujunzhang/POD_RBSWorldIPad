@@ -11,6 +11,8 @@
 @interface LoginView : UIView
 
 @property (strong, nonatomic) IBOutlet UIView *view;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldLoginName;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldPassword;
 
 - (IBAction)login:(id)sender;
 

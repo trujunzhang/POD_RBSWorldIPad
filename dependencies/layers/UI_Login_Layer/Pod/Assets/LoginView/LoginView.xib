@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginView">
             <connections>
+                <outlet property="textFieldLoginName" destination="PJu-rJ-IIc" id="MCx-RP-ZcT"/>
+                <outlet property="textFieldPassword" destination="hZV-sg-umE" id="b5M-JW-4HE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BPG-8n-Nhh"/>
             </connections>
         </placeholder>
@@ -60,6 +62,9 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="O7u-5z-pIp"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8e9-2b-vXV">
                     <rect key="frame" x="69" y="328" width="280" height="70"/>
