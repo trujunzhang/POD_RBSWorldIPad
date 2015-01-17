@@ -28,8 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    _loginView = [[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil][0];
-//    [self.mLogViewPanel addSubview:_loginView];
 }
 
 
