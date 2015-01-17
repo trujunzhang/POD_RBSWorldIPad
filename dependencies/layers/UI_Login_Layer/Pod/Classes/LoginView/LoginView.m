@@ -10,12 +10,40 @@
 
 @implementation LoginView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
+#pragma mark -
+#pragma mark - View Lifecycle
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if(self) {
+        // Initialization code
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if(self) {
+
+        // 1. Load the .xib
+        [[NSBundle mainBundle] loadNibNamed:@"LoginView" owner:self options:nil];
+
+        // 2. Setup subview
+        [self addSubview:self.view];
+    }
+    return self;
+}
+
+- (IBAction)login:(id)sender {
+    NSString *debug = @"debug";
+}
+
+
+- (BOOL)checkTextView:(UITextField *)sender {
+//    if([sender isEqual:self.textFieldLoginName] || [sender isEqual:self.textFieldPassword]) {
+//        return YES;
+//    }
+    return NO;
+}
 @end

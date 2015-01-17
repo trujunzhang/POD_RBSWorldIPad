@@ -5,15 +5,18 @@ platform :ios, 7.0
 
 target 'RBSWorldIPad', :exclusive => true do
 
-  pod 'AsyncDisplayKit', :git => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit'
+  pod 'AsyncDisplayKit'
 
-  pod 'Reveal-iOS-SDK', '~> 111.1.1'
-  pod 'pop', '~> 111.1.1'
-  pod 'SDWebImage', '~> 111.1.1'
+  pod 'Reveal-iOS-SDK'
+  pod 'pop'
+  pod 'SDWebImage'
 
-  pod 'Regexer', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
-  pod 'AFNetworking', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'
-  pod 'ISMemoryCache', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/ISMemoryCache'
+  pod 'Regexer'
+  pod 'AFNetworking'
+  pod 'ISMemoryCache'
+  pod 'XMLDictionary'
+  pod 'Bolts'
+
 
   # ________________collect common library___________________
   pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"
@@ -22,6 +25,11 @@ target 'RBSWorldIPad', :exclusive => true do
   pod "Business-Logic-Layer", :path => "../dependencies/layers/Business-Logic-Layer"
 
   # ________________Projects for iPad___________________
+  pod "YouTubeAPI3-Objective-C-wrapper", :path => "../dependencies/lib/YouTubeAPI3-Objective-C-wrapper"
+  pod "YKMediaPlayerKit", :path => "../dependencies/lib/YKMediaPlayerKit"
+  pod "google-api-services-youtube", :path => "../dependencies/layers/google-api-services-youtube"
+  pod "MPMoviePlayerController-Subtitles", :path => "../dependencies/lib/MPMoviePlayerController-Subtitles"
+
   # ________________module Projects___________________
   pod "UI_Login_Layer", :path => "../dependencies/layers/UI_Login_Layer"
 

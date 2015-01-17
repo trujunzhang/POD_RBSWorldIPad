@@ -10,4 +10,9 @@
 
 @interface LoginView : UIView
 
+@property (strong, nonatomic) IBOutlet UIView *view;
+
+- (IBAction)login:(id)sender;
+
+- (BOOL)checkTextView:(UITextField *)field;
 @end

@@ -8,9 +8,9 @@ Pod::Spec.new do |s|
   s.homepage = 'http://www.github.com/wanghaogithub720'
   s.author   = { 'Jin Budelmann' => 'jin@bitcrank.com' }
   s.source   = { :git => 'https://github.com/wanghaogithub720/mxYoutube.git', :tag => '0.1.0' }
-  s.platform = :ios
+  s.platform = :ios, '7.0'
 
-  s.resources = "Pod/Assets/*/*.*"
+  s.resources = "Pod/Assets/*/*.png"
   s.requires_arc = true
 
   s.subspec 'LoginViewController' do |sub|
@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'LoginView' do |sub|
     sub.source_files = 'Pod/Classes/LoginView/*.{h,m}'
+    sub.resources = "Pod/Assets/LoginView/*.xib"
   end
 
 end
