@@ -286,7 +286,7 @@ static GYoutubeHelper *instance = nil;
 #pragma mark -
 #pragma mark "subscriptions" methods
 
-- (void)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
+- (NSURLSessionDataTask *)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
     NSDictionary *parameters = @{
             @"part" : @"id,snippet",
             @"channelId" : channelId,
@@ -302,6 +302,7 @@ static GYoutubeHelper *instance = nil;
         }
     };
     NSURLSessionDataTask *task = [[MABYT3_APIRequest sharedInstance] LISTSubscriptionsForURL:parameters completion:mabYoutubeResponseBlock accessToken:authorizer.accessToken];
+    return task;
 }
 
 

@@ -91,7 +91,7 @@ typedef void (^ErrorResponseBlock)(NSError *error);
 
 #pragma mark -
 #pragma mark "subscriptions" methods
-- (void)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
+- (NSURLSessionDataTask *)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
 
 - (void)fetchSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock;
 
