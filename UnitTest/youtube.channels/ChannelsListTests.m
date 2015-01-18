@@ -17,18 +17,35 @@
 
 @implementation ChannelsListTests
 
+
 - (void)testFetchChannelListWithChannelIDs {
-    [Expecta setAsynchronousTestTimeout:15.0];
+    [self fetchChannelListWithChannelIDs];
+}
+
+#pragma mark -
+#pragma mark
+
+- (void)fetchChannelListWithChannelIDs {
+    __block NSArray *blockResponseObject = nil;
+    __block id blockError = nil;
 
     YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
-        NSString *debug = @"debug";
+        blockResponseObject = array;
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
-        NSString *debug = @"debug";
+        blockError = error;
     };
     NSString *channelIDs = @"UC0wObT_HayGfWLdRAnFyPwA,UCppqA-uJ4duBJymLy8vyEDQ";
     NSURLSessionDataTask *task = [[GYoutubeHelper getInstance] fetchChannelListWithChannelIDs:channelIDs completion:completionBlock errorHandler:errorBlock];
+
     [task resume];
+
+    expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
+    expect(blockError).will.beNil();
+    expect(blockResponseObject).willNot.beNil();
+
+//    XCTAssert(blockResponseObject.count, 2, @"expect result is 2.");
+    XCTAssert(3, 2, @"expect result is 2.");
 
 }
 
