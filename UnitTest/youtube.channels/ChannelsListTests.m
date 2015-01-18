@@ -50,9 +50,9 @@
 
 
 #pragma mark -
-#pragma mark fetching SUBSCRIPTIONS LIST form CHANNEL ID
+#pragma mark fetching SUBSCRIPTIONS LIST form CHANNEL ID (v1.0)
 
-- (void)fetchSubscriptionListWithChannelID {
+- (void)fetchSubscriptionListWithChannelIDByGoogoeApi {
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 
