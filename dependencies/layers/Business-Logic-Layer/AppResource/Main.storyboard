@@ -100,6 +100,23 @@
             </objects>
             <point key="canvasLocation" x="-561" y="-264"/>
         </scene>
+        <!--Youtube Video List View Controller-->
+        <scene sceneID="4eo-D7-ZKW">
+            <objects>
+                <viewController storyboardIdentifier="YoutubeVideoListViewController" id="FOT-B5-WIS" customClass="YoutubeVideoListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7vV-Eh-TA5"/>
+                        <viewControllerLayoutGuide type="bottom" id="lsf-Pv-34m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZdK-DV-oZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MFD-qv-rnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="Default-Landscape.png" width="1024" height="768"/>

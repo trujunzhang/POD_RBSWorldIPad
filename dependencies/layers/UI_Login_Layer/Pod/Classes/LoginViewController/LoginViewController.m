@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "YoutubeVideoListViewController.h"
 
 @interface LoginViewController () {
     IBOutlet LoginView *loginView;
@@ -27,6 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    loginView.callerdelegate = self;
+    loginView.callbackSuccess = @selector(loginSuccessfully:);
+}
+
+- (void)loginSuccessfully:(NSString *)message {
+    YoutubeVideoListViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"YoutubeVideoListViewController"];
+    [self.navigationController pushViewController:loginViewController animated:YES];
 }
 
 

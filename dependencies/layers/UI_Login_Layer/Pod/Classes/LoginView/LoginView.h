@@ -14,6 +14,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *textFieldLoginName;
 @property (strong, nonatomic) IBOutlet UITextField *textFieldPassword;
 
+@property (readwrite, retain) id callerdelegate;
+@property (nonatomic, assign) SEL callbackSuccess;
+
 - (IBAction)login:(id)sender;
 
 @end

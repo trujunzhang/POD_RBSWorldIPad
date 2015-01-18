@@ -40,7 +40,9 @@
 #pragma mark
 
 - (IBAction)login:(id)sender {
-    NSString *debug = @"debug";
+    if([self.callerdelegate respondsToSelector:self.callbackSuccess]) {
+        [self.callerdelegate performSelector:self.callbackSuccess withObject:@"sucess"];
+    }
 }
 
 
