@@ -430,9 +430,9 @@ static GYoutubeHelper *instance = nil;
             @"id" : channelId,
             @"fields" : @"items/brandingSettings(image)",
     };
-    NSURLSessionDataTask *task = [self fetchChannelWithDictionary:parameters
-                                                       completion:completion
-                                                     errorHandler:errorBlock];
+    NSURLSessionDataTask *task = [self fetchChannelListWithDictionary:parameters
+                                                           completion:completion
+                                                         errorHandler:errorBlock];
 }
 
 
@@ -444,24 +444,24 @@ static GYoutubeHelper *instance = nil;
             @"fields" : @"items/snippet(thumbnails),items/brandingSettings(channel,image),items/statistics(subscriberCount)",
 //    @"fields" : @"items/brandingSettings/channel(title),items/statistics(subscriberCount)",
     };
-    NSURLSessionDataTask *task = [self fetchChannelWithDictionary:parameters
-                                                       completion:completion
-                                                     errorHandler:errorBlock];
+    NSURLSessionDataTask *task = [self fetchChannelListWithDictionary:parameters
+                                                           completion:completion
+                                                         errorHandler:errorBlock];
 }
 
 
-- (NSURLSessionDataTask *)fetchChannelWithDictionary:(NSMutableDictionary *)parameters completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock {
+- (NSURLSessionDataTask *)fetchChannelListWithDictionary:(NSMutableDictionary *)parameters completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock {
     NSURLSessionDataTask *task =
             [[MABYT3_APIRequest sharedInstance]
-                    LISTChannelsThumbnailsForURL:parameters
-                                      completion:^(YoutubeResponseInfo *responseInfo, NSError *error) {
-                                          if(responseInfo) {
-                                              NSMutableArray *array = responseInfo.array;
-                                              completion(array, nil);
-                                          } else {
-                                              NSLog(@"ERROR: %@", error);
-                                          }
-                                      }];
+                    LISTChannelListForURL:parameters
+                               completion:^(YoutubeResponseInfo *responseInfo, NSError *error) {
+                                   if(responseInfo) {
+                                       NSMutableArray *array = responseInfo.array;
+                                       completion(array, nil);
+                                   } else {
+                                       NSLog(@"ERROR: %@", error);
+                                   }
+                               }];
     return task;
 }
 
@@ -484,9 +484,9 @@ static GYoutubeHelper *instance = nil;
     };
 
     NSURLSessionDataTask *task =
-            [self fetchChannelWithDictionary:parameters
-                                  completion:thumbnailCompletion
-                                errorHandler:errorBlock];
+            [self fetchChannelListWithDictionary:parameters
+                                      completion:thumbnailCompletion
+                                    errorHandler:errorBlock];
 }
 
 
@@ -703,21 +703,14 @@ static GYoutubeHelper *instance = nil;
     }];
 }
 
-- (void)fetchChannelListWithChannelIDs:(NSString *)channelIDs completion:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
-    YTServiceYouTube *service = self.youTubeService;
-
-    YTQueryYouTube *query = [YTQueryYouTube queryForChannelsListWithPart:@"snippet"];
-    query.mine = YES;
-    query.identifier = channelIDs;
-
-    [service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeChannelListResponse *resultList, NSError *error) {
-        // The contentDetails of the response has the playlists available for "my channel".
-        NSArray *array = [resultList items];
-        if([array count] > 0) {
-            completionBlock(array, nil);
-        }
-        errorBlock(error);
-    }];
+- (NSURLSessionDataTask *)fetchChannelListWithChannelIDs:(NSString *)channelIDs completion:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
+    NSDictionary *parameters = @{
+            @"part" : @"snippet,brandingSettings,statistics",
+            @"id" : channelIDs,
+            @"fields" : @"items/snippet(thumbnails),items/brandingSettings(channel,image),items/statistics(subscriberCount)",
+    };
+    NSURLSessionDataTask *task = [self fetchChannelListWithDictionary:parameters completion:completionBlock errorHandler:errorBlock];
+    return task;
 }
 
 

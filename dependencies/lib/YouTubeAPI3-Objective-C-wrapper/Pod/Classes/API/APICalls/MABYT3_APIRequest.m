@@ -855,31 +855,32 @@
 }
 
 
-- (NSURLSessionDataTask *)LISTChannelsThumbnailsForURL:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion {
+- (NSURLSessionDataTask *)LISTChannelListForURL:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion {
     NSString *maxResultsString = [NSString stringWithFormat:@"%d", search_maxResults];
     NSMutableDictionary *dictionary = [self commonDictionary:parameters maxResultsString:maxResultsString];
 
-    NSURLSessionDataTask *task = [self GET:@"/youtube/v3/channels"
-                                parameters:dictionary
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+    NSURLSessionDataTask *task =
+            [self GET:@"/youtube/v3/channels"
+           parameters:dictionary
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
 
-                                       if(httpResponse.statusCode == 200) {
-                                           YoutubeResponseInfo *responseInfo = [self parseChannelListWithData:responseObject];
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               completion(responseInfo, nil);
-                                           });
-                                       } else {
-                                           NSError *error = [self getError:responseObject httpresp:httpResponse];
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               completion(nil, error);
-                                           });
-                                       }
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil, error);
-                });
-            }];
+                  if(httpResponse.statusCode == 200) {
+                      YoutubeResponseInfo *responseInfo = [self parseChannelListWithData:responseObject];
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          completion(responseInfo, nil);
+                      });
+                  } else {
+                      NSError *error = [self getError:responseObject httpresp:httpResponse];
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          completion(nil, error);
+                      });
+                  }
+              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completion(nil, error);
+                        });
+                    }];
 
     return task;
 }
@@ -889,28 +890,29 @@
     NSString *maxResultsString = [NSString stringWithFormat:@"%d", search_maxResults];
     NSMutableDictionary *dictionary = [self commonDictionary:parameters maxResultsString:maxResultsString];
 
-    NSURLSessionDataTask *task = [self GET:@"/youtube/v3/playlists"
-                                parameters:dictionary
-                                   success:^(NSURLSessionDataTask *task, id responseObject) {
-                                       NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+    NSURLSessionDataTask *task =
+            [self GET:@"/youtube/v3/playlists"
+           parameters:dictionary
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                  NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
 
-                                       if(httpResponse.statusCode == 200) {
-                                           YoutubeResponseInfo *responseInfo = [self parsePlayListWithData:responseObject];
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               completion(responseInfo, nil);
-                                           });
-                                       } else {
-                                           NSError *error = [self getError:responseObject httpresp:httpResponse];
-                                           dispatch_async(dispatch_get_main_queue(), ^{
-                                               completion(nil, error);
-                                           });
-                                       }
+                  if(httpResponse.statusCode == 200) {
+                      YoutubeResponseInfo *responseInfo = [self parsePlayListWithData:responseObject];
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          completion(responseInfo, nil);
+                      });
+                  } else {
+                      NSError *error = [self getError:responseObject httpresp:httpResponse];
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                          completion(nil, error);
+                      });
+                  }
 
-                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil, error);
-                });
-            }];
+              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            completion(nil, error);
+                        });
+                    }];
 
     return task;
 }

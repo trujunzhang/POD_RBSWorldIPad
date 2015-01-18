@@ -8,26 +8,28 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-//#import "GYoutubeHelper.h"
+#import "GYoutubeHelper.h"
+#import "AppTestCase.h"
 
-@interface ChannelsListTests : XCTestCase
+@interface ChannelsListTests : AppTestCase
 
 @end
 
 @implementation ChannelsListTests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
 - (void)testFetchChannelListWithChannelIDs {
-//    [GYoutubeHelper ]
+    [Expecta setAsynchronousTestTimeout:15.0];
+
+    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+        NSString *debug = @"debug";
+    };
+    ErrorResponseBlock errorBlock = ^(NSError *error) {
+        NSString *debug = @"debug";
+    };
+    NSString *channelIDs = @"UC0wObT_HayGfWLdRAnFyPwA,UCppqA-uJ4duBJymLy8vyEDQ";
+    NSURLSessionDataTask *task = [[GYoutubeHelper getInstance] fetchChannelListWithChannelIDs:channelIDs completion:completionBlock errorHandler:errorBlock];
+    [task resume];
+
 }
 
 @end

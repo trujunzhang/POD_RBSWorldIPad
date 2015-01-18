@@ -87,7 +87,7 @@ static NSUInteger search_maxResults = 20;
 
 - (NSURLSessionDataTask *)LISTSubscriptionsForURL:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion accessToken:(NSString *)authToken;
 
-- (NSURLSessionDataTask *)LISTChannelsThumbnailsForURL:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion;
+- (NSURLSessionDataTask *)LISTChannelListForURL:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion;
 
 - (NSURLSessionDataTask *)LISTPlayListForURL:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion;
 
