@@ -19,7 +19,7 @@
 
 
 - (void)testFetchChannelListWithChannelIDs {
-    [self fetchChannelListWithChannelIDs];
+    [self fetchSubscriptionListWithChannelIDByGoogoeAPI];
 }
 
 #pragma mark -
@@ -52,7 +52,7 @@
 #pragma mark -
 #pragma mark fetching SUBSCRIPTIONS LIST form CHANNEL ID (v1.0)
 
-- (void)fetchSubscriptionListWithChannelIDByGoogoeApi {
+- (void)fetchSubscriptionListWithChannelIDByGoogoeAPI {
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 
@@ -62,12 +62,12 @@
     ErrorResponseBlock errorBlock = ^(NSError *error) {
         blockError = error;
     };
-    NSString *channelIDs = @"UC0wObT_HayGfWLdRAnFyPwA,UCppqA-uJ4duBJymLy8vyEDQ";
-    NSURLSessionDataTask *task = [[GYoutubeHelper getInstance] fetchChannelListWithChannelIDs:channelIDs completion:completionBlock errorHandler:errorBlock];
+    NSString *channelID = NPTEL_CHANNEL_ID;
+    [[GYoutubeHelper getInstance] fetchSubscriptionsListWithChannelId:channelID CompletionHandler:completionBlock errorHandler:errorBlock];
 
-    [task resume];
+//    [task resume];
 
-    expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
+//    expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
     expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
 

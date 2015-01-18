@@ -26,6 +26,9 @@
 
 #import "Expecta.h"
 
+#define NPTEL_CHANNEL_ID @"UC640y4UvDAlya_WOj5U4pfA"
+
+
 @interface AppTestCase : XCTestCase
 
 @property (nonatomic, strong, readonly) NSURL *baseURL;

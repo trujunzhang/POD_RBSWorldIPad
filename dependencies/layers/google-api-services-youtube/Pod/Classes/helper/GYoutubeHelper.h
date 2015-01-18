@@ -50,10 +50,6 @@ typedef void (^ErrorResponseBlock)(NSError *error);
 
 - (void)signingOut;
 
-- (void)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
-
-- (void)fetchSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock;
-
 
 - (NSURLSessionDataTask *)fetchChannelBrandingWithChannelId:(NSString *)channelId completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock;
 
@@ -92,5 +88,12 @@ typedef void (^ErrorResponseBlock)(NSError *error);
 - (NSURLSessionDataTask *)fetchChannelListWithChannelIDs:(NSString *)channelIDs completion:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
 
 - (void)fetchChannelListWithIdentifier:(NSString *)channelId completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock;
+
+#pragma mark -
+#pragma mark "subscriptions" methods
+- (void)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
+
+- (void)fetchSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock;
+
 
 @end
