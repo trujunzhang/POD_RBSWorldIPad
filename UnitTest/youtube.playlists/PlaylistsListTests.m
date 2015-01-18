@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "GYoutubeHelper.h"
 #import "AppTestCase.h"
 
 @interface PlaylistsListTests : AppTestCase

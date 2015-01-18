@@ -57,7 +57,9 @@
 #define YTYouTubeVideoCache  YoutubeVideoCache
 
 #define YTYouTubePlayList  MABYT3_PlayList
-#define YTYouTubePlaylistItem  GTLYouTubePlaylistItem
+//#define YTYouTubePlaylistItem  GTLYouTubePlaylistItem
+#define YTYouTubePlaylistItem  MABYT3_PlayListItem
+
 
 // Channel for author
 #define YTYouTubeAuthorChannel  GTLYouTubeChannel

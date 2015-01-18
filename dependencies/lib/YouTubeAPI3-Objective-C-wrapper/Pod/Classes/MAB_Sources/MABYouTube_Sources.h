@@ -32,21 +32,37 @@
 
 
 #import "MABYT3_Video.h"
+#import "MABYT3_VideoCategory.h"
+
 #import "MABYT3_Thumbnail.h"
 #import "MABYT3_ThumbnailDetails.h"
 #import "MABYT3_SearchItem.h"
-#include "MABYT3_Activity.h"
-#import "MABYT3_Channel.h"
-#import "MABYT3_ActivityContentDetails.h"
 #import "MABYT3_ResourceId.h"
+
+#include "MABYT3_Activity.h"
+#import "MABYT3_ActivityContentDetails.h"
+
 #import "MABYT3_PlayList.h"
 #import "MABYT3_PlayListItem.h"
-#import "MABYT3_ChannelBrandingSettings.h"
-#import "MABYT3_VideoCategory.h"
+
 #import "MABYT3_Language.h"
 #import "MABYT3_GuideCategory.h"
+
+#import "MABYT3_Channel.h"
 #import "MABYT3_ChannelSection.h"
+#import "MABYT3_ChannelBrandingSettings.h"
 
 #import "MABYT3_TranscriptList.h"
 #import "MABYT3_Transcript.h"
 #import "MABYT3_Track.h"
+
+#import "MABYT3_PlayListItem.h"
+#import "MABYT3_PlayListItemContentDetails.h"
+#import "MABYT3_PlayListItemSnippet.h"
+
+#import "MABYT3_PlayList.h"
+#import "MABYT3_PlayListSnippet.h"
+#import "MABYT3_PlayListContentDetails.h"
+
+
+

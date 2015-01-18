@@ -544,6 +544,28 @@ static GYoutubeHelper *instance = nil;
 }
 
 #pragma mark -
+#pragma mark "playlistItems" methods
+
+- (void)fetchVideoListWithPlayListID:(NSString *)playlistId completionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
+
+    NSDictionary *parameters = @{
+            @"part" : @"id,snippet,contentDetails,statistics",
+            @"playlistId" : playlistId
+    };
+    NSURLSessionDataTask *task =
+            [[MABYT3_APIRequest sharedInstance]
+                    LISTVideosForURL:parameters
+                          completion:^(YoutubeResponseInfo *responseInfo, NSError *error) {
+                              if(responseInfo) {
+                                  completionBlock(responseInfo.array, nil);
+                              } else {
+                                  NSLog(@"ERROR: %@", error);
+                              }
+                          }];
+}
+
+
+#pragma mark -
 #pragma mark "channels" methods : "youtube.channels.list"
 
 - (void)fetchAuthUserChannelWithCompletion:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {

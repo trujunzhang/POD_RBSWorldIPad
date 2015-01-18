@@ -83,7 +83,13 @@ typedef void (^ErrorResponseBlock)(NSError *error);
 - (void)fetchPlaylistItemsListWithRequestInfo:(GYoutubeRequestInfo *)info completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)handler;
 
 #pragma mark -
+#pragma mark "playlistItems" methods
+
+- (void)fetchVideoListWithPlayListID:(NSString *)playlistId completionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
+
+#pragma mark -
 #pragma mark "channels" methods
+
 
 - (NSURLSessionDataTask *)fetchChannelListWithChannelIDs:(NSString *)channelIDs completion:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
 
@@ -91,6 +97,7 @@ typedef void (^ErrorResponseBlock)(NSError *error);
 
 #pragma mark -
 #pragma mark "subscriptions" methods
+
 - (NSURLSessionDataTask *)fetchMABSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
 
 - (void)fetchSubscriptionsListWithChannelId:(NSString *)channelId CompletionHandler:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock;
