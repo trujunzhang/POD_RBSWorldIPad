@@ -5,6 +5,7 @@
 
 #import "YoutubeVideoListViewController.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+#import <google-api-services-youtube/GYoutubeHelper.h>
 #import "ASControlNode+Subclasses.h"
 #import "ASDisplayNode+Subclasses.h"
 #import "YTAsCollectionChannelCellNode.h"
@@ -168,6 +169,24 @@
     }
 
     return size;
+}
+
+#pragma mark -
+#pragma mark
+
+- (void)fetchVideoListWithPlayListID {
+    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+
+    };
+    ErrorResponseBlock errorBlock = ^(NSError *error) {
+
+    };
+    NSString *playlistId = @
+            "PLbMVogVj5nJSC_ZwkvUv15g6lYrNNMI9M,"//
+            "PLbMVogVj5nJSEQYH2dVtcXN9I4n8hF0VY"
+            "PLbMVogVj5nJQNzJT6sYZpB7H1G6WF0FZ4"
+            "PLbMVogVj5nJSl_2XmFjuRmvuAgCOZXUjv";
+    NSURLSessionDataTask *task = [[GYoutubeHelper getInstance] fetchVideoListWithPlayListID:playlistId completionHandler:completionBlock errorHandler:errorBlock];
 }
 
 
