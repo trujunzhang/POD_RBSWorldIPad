@@ -16,6 +16,7 @@ target 'RBSWorldIPad', :exclusive => true do
   pod 'ISMemoryCache'
   pod 'XMLDictionary'
   pod 'Bolts'
+  pod 'TPKeyboardAvoiding'
 
 
   # ________________collect common library___________________

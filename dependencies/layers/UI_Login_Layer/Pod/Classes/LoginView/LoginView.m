@@ -35,15 +35,13 @@
     return self;
 }
 
+
+#pragma mark -
+#pragma mark
+
 - (IBAction)login:(id)sender {
     NSString *debug = @"debug";
 }
 
 
-- (BOOL)checkTextView:(UITextField *)sender {
-//    if([sender isEqual:self.textFieldLoginName] || [sender isEqual:self.textFieldPassword]) {
-//        return YES;
-//    }
-    return NO;
-}
 @end

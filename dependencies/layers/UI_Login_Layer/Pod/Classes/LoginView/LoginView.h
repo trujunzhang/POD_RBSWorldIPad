@@ -16,5 +16,4 @@
 
 - (IBAction)login:(id)sender;
 
-- (BOOL)checkTextView:(UITextField *)field;
 @end

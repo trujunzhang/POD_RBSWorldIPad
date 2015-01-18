@@ -74,6 +74,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginView" destination="7f6-cc-d9a" id="y8Z-Ob-cud"/>
                         <outlet property="mLogViewPanel" destination="7f6-cc-d9a" id="DuK-95-wYn"/>
                     </connections>
                 </viewController>
