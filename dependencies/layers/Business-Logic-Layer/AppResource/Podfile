@@ -5,30 +5,35 @@ platform :ios, 7.0
 
 target 'RBSWorldIPad', :exclusive => true do
 
-  pod 'AsyncDisplayKit'
+  pod 'Google-API-Client'
+  pod "YouTubeAPI3-Objective-C-wrapper", :path => "../dependencies/lib/YouTubeAPI3-Objective-C-wrapper"
+  pod "google-api-services-youtube", :path => "../dependencies/layers/google-api-services-youtube"
 
+  pod 'AFNetworking'
+  pod 'XMLDictionary'
+  pod 'Regexer'
+
+# ________________collect common library___________________
+  pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"
+
+
+
+
+  pod 'AsyncDisplayKit'
   pod 'Reveal-iOS-SDK'
   pod 'pop'
   pod 'SDWebImage'
 
-  pod 'Regexer'
-  pod 'AFNetworking'
+
   pod 'ISMemoryCache'
-  pod 'XMLDictionary'
   pod 'Bolts'
   pod 'TPKeyboardAvoiding'
-
-
-  # ________________collect common library___________________
-  pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"
 
   # ________________Project layers___________________
   pod "Business-Logic-Layer", :path => "../dependencies/layers/Business-Logic-Layer"
 
   # ________________Projects for iPad___________________
-  pod "YouTubeAPI3-Objective-C-wrapper", :path => "../dependencies/lib/YouTubeAPI3-Objective-C-wrapper"
   pod "YKMediaPlayerKit", :path => "../dependencies/lib/YKMediaPlayerKit"
-  pod "google-api-services-youtube", :path => "../dependencies/layers/google-api-services-youtube"
   pod "MPMoviePlayerController-Subtitles", :path => "../dependencies/lib/MPMoviePlayerController-Subtitles"
 
   # ________________module Projects___________________
@@ -37,11 +42,6 @@ target 'RBSWorldIPad', :exclusive => true do
 end
 
 target 'RBSWorldIPadTests', :exclusive => true do
-
-  # pod 'OCMockito', '~> 1.0'
-
-  #pod 'OCHamcrest', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCHamcrest'
-  #pod 'OCMockito', :path => '/Volumes/Home/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
 
 
 end
