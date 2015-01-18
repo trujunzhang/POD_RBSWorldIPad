@@ -788,7 +788,9 @@
 
 
 - (NSURLSessionDataTask *)LISTPlayListItems:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion {
-    NSMutableDictionary *dictionary = [self commonDictionary:parameters maxResultsString:nil];
+//    NSMutableDictionary *dictionary = [self commonDictionary:parameters maxResultsString:nil];
+    NSString *maxResultsString = [NSString stringWithFormat:@"%d", 50];
+    NSMutableDictionary *dictionary = [self commonDictionary:parameters maxResultsString:maxResultsString];
 
     NSURLSessionDataTask *task = [self GET:@"/youtube/v3/playlistItems"
                                 parameters:dictionary
@@ -796,7 +798,7 @@
                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
 
                                        if(httpResponse.statusCode == 200) {
-                                           YoutubeResponseInfo *responseInfo = [self parseVideoListWithData:responseObject];
+                                           YoutubeResponseInfo *responseInfo = [self parsePlayListItems:responseObject];
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                completion(responseInfo, nil);
                                            });
@@ -1929,7 +1931,7 @@
         NSArray *items = [dict objectForKey:@"items"];
         if(items.count > 0) {
             for (int i = 0;i < items.count;i++) {
-                YTYouTubeVideoCache *itm = [[YTYouTubeVideoCache alloc] initFromDictionary:items[i]];
+                YTYouTubePlaylistItem *itm = [[YTYouTubePlaylistItem alloc] initFromDictionary:items[i]];
                 [arr addObject:itm];
             }
         }

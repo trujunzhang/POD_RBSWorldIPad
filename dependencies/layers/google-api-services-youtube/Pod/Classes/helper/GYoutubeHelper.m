@@ -546,22 +546,23 @@ static GYoutubeHelper *instance = nil;
 #pragma mark -
 #pragma mark "playlistItems" methods
 
-- (void)fetchVideoListWithPlayListID:(NSString *)playlistId completionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
+- (NSURLSessionDataTask *)fetchVideoListWithPlayListID:(NSString *)playlistId completionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock {
 
     NSDictionary *parameters = @{
-            @"part" : @"id,snippet,contentDetails,statistics",
+            @"part" : @"id,snippet",
             @"playlistId" : playlistId
     };
     NSURLSessionDataTask *task =
             [[MABYT3_APIRequest sharedInstance]
-                    LISTVideosForURL:parameters
-                          completion:^(YoutubeResponseInfo *responseInfo, NSError *error) {
-                              if(responseInfo) {
-                                  completionBlock(responseInfo.array, nil);
-                              } else {
-                                  NSLog(@"ERROR: %@", error);
-                              }
-                          }];
+                    LISTPlayListItems:parameters
+                           completion:^(YoutubeResponseInfo *responseInfo, NSError *error) {
+                               if(responseInfo) {
+                                   completionBlock(responseInfo.array, nil);
+                               } else {
+                                   NSLog(@"ERROR: %@", error);
+                               }
+                           }];
+    return task;
 }
 
 

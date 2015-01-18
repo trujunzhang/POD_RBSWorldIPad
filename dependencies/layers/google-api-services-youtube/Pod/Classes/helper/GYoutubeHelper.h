@@ -85,7 +85,7 @@ typedef void (^ErrorResponseBlock)(NSError *error);
 #pragma mark -
 #pragma mark "playlistItems" methods
 
-- (void)fetchVideoListWithPlayListID:(NSString *)playlistId completionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
+- (NSURLSessionDataTask *)fetchVideoListWithPlayListID:(NSString *)playlistId completionHandler:(YoutubeResponseBlock)completionBlock errorHandler:(ErrorResponseBlock)errorBlock;
 
 #pragma mark -
 #pragma mark "channels" methods

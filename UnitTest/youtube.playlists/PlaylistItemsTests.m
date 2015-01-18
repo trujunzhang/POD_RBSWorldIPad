@@ -47,8 +47,7 @@
     expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
 
-    expect(blockResponseObject.count).to.equal(2);
-    expect([blockResponseObject[0] class]).to.equal([MABYT3_Channel class]);
+    expect([blockResponseObject[0] class]).to.equal([MABYT3_PlayListItem class]);
 }
 
 @end
