@@ -84,14 +84,9 @@ static GYoutubeHelper *instance = nil;
     self.youTubeService.APIKey = apiKey;
 
     // 2
-    YTOAuth2Authentication *auth;
-    auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                                 clientID:kMyClientID
-                                                             clientSecret:kMyClientSecret];
-    // 3
-    [self fetchAuthorizeInfo:auth];
+    [self fetchAuthorizeInfo:[GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName clientID:kMyClientID clientSecret:kMyClientSecret]];
 
-    // 4
+    // 3
     [self saveMABGoogleAccessToken:[YoutubeAuthDataStore readTokens]];
 }
 
@@ -314,22 +309,20 @@ static GYoutubeHelper *instance = nil;
     YTServiceYouTube *service = self.youTubeService;
 
     YTQueryYouTube *query = [YTQueryYouTube queryForSubscriptionsListWithPart:@"id,snippet"];
-//   YTQueryYouTube * query = [YTQueryYouTube queryForSubscriptionsListWithPart:@"id,snippet"];
     query.maxResults = 50;
     query.channelId = channelId;
     query.fields = @"items/snippet(title,resourceId,thumbnails),nextPageToken";
 
     [service executeQuery:query
-        completionHandler:^(GTLServiceTicket *ticket,
-                GTLYouTubeSubscriptionListResponse *resultList,
+        completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeSubscriptionListResponse *resultList,
                 NSError *error) {
-            NSString *nextPageToken = resultList.nextPageToken;
-            // The contentDetails of the response has the playlists available for "my channel".
-            NSArray *array = [resultList items];
-            if([array count] > 0) {
+            if(error) {
+                errorBlock(error);
+            } else {
+                NSString *nextPageToken = resultList.nextPageToken;
+                NSArray *array = [resultList items];
                 completionBlock(array, nil);
             }
-            errorBlock(error);
         }];
 }
 
