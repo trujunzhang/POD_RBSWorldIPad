@@ -10,6 +10,9 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
+  s.subspec 'VideoList' do |sub|
+    sub.source_files = 'Pod/Classes/VideoList/*.{h,m}'
+  end
 
 
 
