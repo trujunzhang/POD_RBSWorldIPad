@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "LoginView.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface LoginViewController () {
     IBOutlet LoginView *loginView;
@@ -39,6 +40,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidUnload {
+//    [loginView:nil];
+    [super viewDidUnload];
+
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 
