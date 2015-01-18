@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "GYoutubeHelper.h"
 #import "AppTestCase.h"
+#import "YoutubeParser.h"
 
 //playlistId
 //:PLbMVogVj5nJQmNqgs7GLBE-HhMi0GQOPW-(https://www.youtube.com/watch?v=GE1YyJ4A_7w&list=PLbMVogVj5nJQmNqgs7GLBE-HhMi0GQOPW)
@@ -34,6 +35,10 @@
 
     YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
         blockResponseObject = array;
+        id object = array[0];
+        NSString *itemThumbnails = [YoutubeParser getPlayListItemThumbnails:object];
+        NSString *itemTitle = [YoutubeParser getPlayListItemTitle:object];
+        NSString *debug = @"debug";
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
         blockError = error;

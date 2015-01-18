@@ -74,4 +74,7 @@
 
 + (void)cacheWithKey:(NSString *)key withValue:(NSString *)value;
 
++ (NSString *)getPlayListItemThumbnails:(id)info;
+
++ (NSString *)getPlayListItemTitle:(id)info;
 @end

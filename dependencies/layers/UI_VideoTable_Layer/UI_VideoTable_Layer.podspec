@@ -14,7 +14,17 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/VideoList/*.{h,m}'
   end
 
+  s.subspec 'AsCollectionCellNode' do |sub|
+    sub.source_files = 'Pod/Classes/AsCollectionCellNode/*.{h,m}'
+  end
 
+  s.subspec 'AsRowCellNode' do |sub|
+    sub.source_files = 'Pod/Classes/AsRowCellNode/*.{h,m}'
+  end
+
+  s.subspec 'CollectionView-Effect' do |sub|
+    sub.source_files = 'Pod/Classes/CollectionView-Effect/*.{h,m}'
+  end
 
 end
 

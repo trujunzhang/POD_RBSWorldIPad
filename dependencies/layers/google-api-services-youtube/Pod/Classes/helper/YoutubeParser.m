@@ -315,4 +315,12 @@
 }
 
 
++ (NSString *)getPlayListItemThumbnails:(YTYouTubePlaylistItem *)playListItem {
+    MABYT3_Thumbnail *mabyt3_thumbnail = playListItem.snippet.thumbnails[@"standard"];
+    return mabyt3_thumbnail.url;
+}
+
++ (NSString *)getPlayListItemTitle:(YTYouTubePlaylistItem *)playListItem {
+    return playListItem.snippet.title;
+}
 @end

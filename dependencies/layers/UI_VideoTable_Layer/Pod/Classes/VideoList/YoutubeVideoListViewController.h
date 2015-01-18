@@ -8,5 +8,11 @@
 
 @interface YoutubeVideoListViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *numbersPerLineArray;
+@property (nonatomic, strong) UICollectionViewFlowLayout *layout;
+
+@property (nonatomic, strong) NSMutableDictionary *cellSizeDictionary;
+
+@property (nonatomic, strong) NSMutableArray *videoList;
 
 @end
