@@ -45,7 +45,7 @@ end
 
 target 'RBSWorldIPadTests', :exclusive => true do
   pod 'Expecta'
-  pod 'kiwi'
+  # pod 'kiwi'
 
   import_pods
 end

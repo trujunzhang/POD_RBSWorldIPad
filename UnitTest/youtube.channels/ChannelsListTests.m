@@ -44,9 +44,8 @@
     expect(blockError).will.beNil();
     expect(blockResponseObject).willNot.beNil();
 
-//    XCTAssert(blockResponseObject.count, 2, @"expect result is 2.");
-    XCTAssert(3, 2, @"expect result is 2.");
-
+    expect(blockResponseObject.count).to.equal(2);
+    expect([blockResponseObject[0] class]).to.equal([MABYT3_Channel class]);
 }
 
 @end
