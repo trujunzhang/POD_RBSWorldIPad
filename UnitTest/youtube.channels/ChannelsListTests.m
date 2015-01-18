@@ -23,9 +23,36 @@
 }
 
 #pragma mark -
-#pragma mark
+#pragma mark fetching CHANNEL LIST
 
 - (void)fetchChannelListWithChannelIDs {
+    __block NSArray *blockResponseObject = nil;
+    __block id blockError = nil;
+
+    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+        blockResponseObject = array;
+    };
+    ErrorResponseBlock errorBlock = ^(NSError *error) {
+        blockError = error;
+    };
+    NSString *channelIDs = @"UC0wObT_HayGfWLdRAnFyPwA,UCppqA-uJ4duBJymLy8vyEDQ";
+    NSURLSessionDataTask *task = [[GYoutubeHelper getInstance] fetchChannelListWithChannelIDs:channelIDs completion:completionBlock errorHandler:errorBlock];
+
+    [task resume];
+
+    expect(task.state).will.equal(NSURLSessionTaskStateCompleted);
+    expect(blockError).will.beNil();
+    expect(blockResponseObject).willNot.beNil();
+
+    expect(blockResponseObject.count).to.equal(2);
+    expect([blockResponseObject[0] class]).to.equal([MABYT3_Channel class]);
+}
+
+
+#pragma mark -
+#pragma mark fetching SUBSCRIPTIONS LIST form CHANNEL ID
+
+- (void)fetchSubscriptionListWithChannelID {
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 

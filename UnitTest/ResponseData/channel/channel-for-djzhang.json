@@ -1,0 +1,48 @@
+{
+ "kind": "youtube#channelListResponse",
+ "etag": "\"F9iA7pnxqNgrkOutjQAa9F2k8HY/JuBnu9VwKk4zmb64wHRMcPil1ZQ\"",
+ "pageInfo": {
+  "totalResults": 1,
+  "resultsPerPage": 1
+ },
+ "items": [
+  {
+   "kind": "youtube#channel",
+   "etag": "\"F9iA7pnxqNgrkOutjQAa9F2k8HY/HyGj5IS8RYSbzqPUCusyqCnuEgU\"",
+   "id": "UC0wObT_HayGfWLdRAnFyPwA",
+   "snippet": {
+    "title": "Zhang Trujun",
+    "description": "",
+    "publishedAt": "2011-11-02T08:12:43.000Z",
+    "thumbnails": {
+     "default": {
+      "url": "https://yt3.ggpht.com/-U5BAYjjLQrs/AAAAAAAAAAI/AAAAAAAAAAA/YD61sS_hGmo/s88-c-k-no/photo.jpg"
+     },
+     "medium": {
+      "url": "https://yt3.ggpht.com/-U5BAYjjLQrs/AAAAAAAAAAI/AAAAAAAAAAA/YD61sS_hGmo/s240-c-k-no/photo.jpg"
+     },
+     "high": {
+      "url": "https://yt3.ggpht.com/-U5BAYjjLQrs/AAAAAAAAAAI/AAAAAAAAAAA/YD61sS_hGmo/s240-c-k-no/photo.jpg"
+     }
+    },
+    "localized": {
+     "title": "Zhang Trujun",
+     "description": ""
+    }
+   },
+   "contentDetails": {
+    "relatedPlaylists": {
+     "uploads": "UU0wObT_HayGfWLdRAnFyPwA"
+    },
+    "googlePlusUserId": "106717865566488673403"
+   },
+   "statistics": {
+    "viewCount": "0",
+    "commentCount": "0",
+    "subscriberCount": "0",
+    "hiddenSubscriberCount": false,
+    "videoCount": "0"
+   }
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "youtube#channelListResponse",
+  "etag": "\"F9iA7pnxqNgrkOutjQAa9F2k8HY/DCvVmBCEkpcNEmc4YzEUC2Mfsyc\"",
+  "pageInfo": {
+    "totalResults": 1,
+    "resultsPerPage": 1
+  },
+  "items": [
+    {
+      "kind": "youtube#channel",
+      "etag": "\"F9iA7pnxqNgrkOutjQAa9F2k8HY/BijNccacfiiAYMKRlWPmwNNiqOs\"",
+      "id": "UC640y4UvDAlya_WOj5U4pfA",
+      "snippet": {
+        "title": "nptelhrd",
+        "description": "This channel provides technical lectures from seven Indian Institutes of Technology (IITs) and Indian Institute of Science (IISc), Bangalore.\n\nPlease visit the NPTEL Channel List below to view the complete list of courses. (24 Channels)",
+        "publishedAt": "2007-11-28T04:54:13.000Z",
+        "thumbnails": {
+          "default": {
+            "url": "https://yt3.ggpht.com/-VO_A5Tys4WY/AAAAAAAAAAI/AAAAAAAAAAA/mBvvbUvh0A8/s88-c-k-no/photo.jpg"
+          },
+          "medium": {
+            "url": "https://yt3.ggpht.com/-VO_A5Tys4WY/AAAAAAAAAAI/AAAAAAAAAAA/mBvvbUvh0A8/s240-c-k-no/photo.jpg"
+          },
+          "high": {
+            "url": "https://yt3.ggpht.com/-VO_A5Tys4WY/AAAAAAAAAAI/AAAAAAAAAAA/mBvvbUvh0A8/s240-c-k-no/photo.jpg"
+          }
+        },
+        "localized": {
+          "title": "nptelhrd",
+          "description": "This channel provides technical lectures from seven Indian Institutes of Technology (IITs) and Indian Institute of Science (IISc), Bangalore.\n\nPlease visit the NPTEL Channel List below to view the complete list of courses. (24 Channels)"
+        }
+      },
+      "contentDetails": {
+        "relatedPlaylists": {
+          "uploads": "UU640y4UvDAlya_WOj5U4pfA"
+        },
+        "googlePlusUserId": "106765654315103208375"
+      },
+      "statistics": {
+        "viewCount": "130296155",
+        "commentCount": "5950",
+        "subscriberCount": "352059",
+        "hiddenSubscriberCount": false,
+        "videoCount": "17270"
+      }
+    }
+  ]
+}
