@@ -40,6 +40,8 @@ target 'RBSWorldIPad', :exclusive => true do
 
 # ________________module Projects___________________
   pod "UI_Login_Layer", :path => "../dependencies/layers/UI_Login_Layer"
+  pod "UI_VideoTable_Layer", :path => "../dependencies/layers/UI_VideoTable_Layer"
+
 
 end
 
