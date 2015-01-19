@@ -18,8 +18,6 @@
 
 
 @interface LoginViewController ()
-@property (strong, nonatomic) IBOutlet UIView *mLogViewPanel;
-
 @end
 
 
@@ -27,14 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view from its nib.
     loginView.callerdelegate = self;
     loginView.callbackSuccess = @selector(loginSuccessfully:);
 }
 
 - (void)loginSuccessfully:(NSString *)message {
-    YoutubeVideoListViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"YoutubeVideoListViewController"];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+    YoutubeVideoListViewController *youtubeVideoListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"YoutubeVideoListViewController"];
+    [self.navigationController pushViewController:youtubeVideoListViewController animated:YES];
 }
 
 
@@ -48,14 +47,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)viewDidUnload {
-//    [loginView:nil];
-    [super viewDidUnload];
-
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 
