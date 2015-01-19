@@ -9,6 +9,8 @@
 #import "ASControlNode+Subclasses.h"
 #import "ASDisplayNode+Subclasses.h"
 #import "YTAsCollectionChannelCellNode.h"
+#import "ClientUIHelper.h"
+#import "YTAsRowNode.h"
 
 #define LAYOUT_MINIMUMCOLUMNSPACING 10;
 
@@ -49,6 +51,7 @@
 - (void)setUICollectionView:(UICollectionView *)collectionView {
     [self.view addSubview:collectionView];
 
+    collectionView.backgroundView = [ClientUIHelper mainUIBackgroundView:self.view.bounds];
     collectionView.showsVerticalScrollIndicator = NO;
     collectionView.directionalLockEnabled = YES;
 }
@@ -96,8 +99,7 @@
 
     CGFloat cellLength = usableSpace / columnCount;
 
-//    CGFloat cellHeight = [YTAsRowNode collectionCellHeight];
-    CGFloat cellHeight = 100;
+    CGFloat cellHeight = [YTAsRowNode collectionCellHeight];
 
     return CGSizeMake(cellLength, cellHeight);
 }
@@ -180,6 +182,7 @@
     YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         NSString *debug = @"debug";
         self.videoList = [array mutableCopy];
+        [self.collectionView reloadData];
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
         NSString *debug = @"debug";
