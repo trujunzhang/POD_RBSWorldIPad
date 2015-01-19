@@ -42,7 +42,7 @@
 
 - (void)pushLoginViewController {
     LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
-    [_navigationController pushViewController:loginViewController animated:YES];
+    [_navigationController pushViewController:loginViewController animated:NO];
 }
 
 - (void)pushYoutubeVideoListViewController {
