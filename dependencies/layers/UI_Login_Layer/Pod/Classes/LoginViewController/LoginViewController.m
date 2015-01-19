@@ -10,6 +10,7 @@
 #import "LoginView.h"
 #import "TPKeyboardAvoidingScrollView.h"
 #import "YoutubeVideoListViewController.h"
+#import "MxTabBarManager.h"
 
 @interface LoginViewController () {
     IBOutlet LoginView *loginView;
@@ -32,9 +33,9 @@
 }
 
 - (void)loginSuccessfully:(NSString *)message {
-    YoutubeVideoListViewController *youtubeVideoListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"YoutubeVideoListViewController"];
-    [self.navigationController pushViewController:youtubeVideoListViewController animated:YES];
+    [[MxTabBarManager sharedTabBarManager] pushYoutubeVideoListViewController];
 }
+
 
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -5,6 +5,7 @@
 
 #import "RBSWorldViewController.h"
 #import "LoginViewController.h"
+#import "MxTabBarManager.h"
 
 @interface RBSWorldViewController () {
 
@@ -29,9 +30,9 @@
 }
 
 - (void)gotoDashboard:(id)sender {
-    LoginViewController *loginViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"loginViewController"];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+    [[MxTabBarManager sharedTabBarManager] pushLoginViewController];
 }
+
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
