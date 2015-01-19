@@ -26,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSAssert(self.numbersPerLineArray, @"not found numbersPerLineArray!");
+
     [self fetchVideoListWithPlayListID];
 
     [self makeCollectionView];
@@ -77,7 +79,7 @@
 
 
 - (int)getCurrentColumnCount:(UIInterfaceOrientation)orientation {
-    return 3;
+    return [(self.numbersPerLineArray[UIInterfaceOrientationIsPortrait(orientation) ? 0 : 1]) intValue];
 }
 
 
