@@ -154,29 +154,26 @@
 #pragma mark - CHTCollectionViewDelegateWaterfallLayout
 
 
-- (CGSize)collectionWaterfallView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [self cellSize];
-}
+//- (CGSize)collectionWaterfallView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    return [self cellSize];
+//}
 
 
 - (CGSize)cellSize {
     CGSize size;
 
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    NSString *key = UIInterfaceOrientationIsPortrait(orientation) ? @"vertical" : @"horizontal";
+    NSString *key = UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation) ? @"vertical" : @"horizontal";
     NSString *keyWidth = [NSString stringWithFormat:@"%@_width", key];
     NSString *keyHeight = [NSString stringWithFormat:@"%@_height", key];
 
-    NSNumber *valueWidth = [self.cellSizeDictionary objectForKey:keyWidth];
-    NSNumber *valueHeight = [self.cellSizeDictionary objectForKey:keyHeight];
+    NSNumber *valueWidth = [YoutubeParser checkAndAppendThumbnailWithChannelId:keyWidth];
+    NSNumber *valueHeight = [YoutubeParser checkAndAppendThumbnailWithChannelId:keyHeight];
     if(valueWidth && valueHeight) {
         size = CGSizeMake([valueWidth floatValue], [valueHeight floatValue]);
     } else {
-        size = [self makeCellSize:orientation];
-        NSNumber *aWidth = [NSNumber numberWithFloat:size.width];
-        NSNumber *aHeight = [NSNumber numberWithFloat:size.height];
-        [self.cellSizeDictionary setObject:aWidth forKey:keyWidth];
-        [self.cellSizeDictionary setObject:aHeight forKey:keyHeight];
+        size = [self makeCellSize:[UIApplication sharedApplication].statusBarOrientation];
+        [YoutubeParser cacheWithKey:keyWidth withValue:[NSNumber numberWithFloat:size.width]];
+        [YoutubeParser cacheWithKey:keyHeight withValue:[NSNumber numberWithFloat:size.height]];
     }
 
     return size;

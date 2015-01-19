@@ -11,13 +11,8 @@
 @property (nonatomic, strong) NSArray *numbersPerLineArray;
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
-@property (nonatomic, strong) NSMutableDictionary *cellSizeDictionary;
-
 @property (nonatomic, strong) NSMutableArray *videoList;
 
-
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
-
 
 @end
