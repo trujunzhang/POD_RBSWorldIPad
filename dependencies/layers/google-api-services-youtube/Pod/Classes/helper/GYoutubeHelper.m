@@ -228,7 +228,7 @@ static GYoutubeHelper *instance = nil;
 
 - (void)getUserInfo {
     // 1
-    YoutubeResponseBlock completion = ^(NSArray *array, NSObject *respObject) {
+    YoutubeResponseBlock completion = ^(NSMutableArray *array, NSObject *respObject) {
         YTYouTubeAuthorChannel *channel = array[0];
         // save user title
         YoutubeAuthInfo *info = [[[YoutubeAuthDataStore alloc] init]
@@ -241,7 +241,7 @@ static GYoutubeHelper *instance = nil;
 
         // 2
 
-        YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+        YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
             [self callbackAfterFetchingAuthorSubscriptionList:array];
         };
         ErrorResponseBlock errorBlock = ^(NSError *error) {
@@ -664,7 +664,7 @@ static GYoutubeHelper *instance = nil;
             @"fields" : @"items/snippet(thumbnails)",
     };
 
-    YoutubeResponseBlock thumbnailCompletion = ^(NSArray *array, NSObject *respObject) {
+    YoutubeResponseBlock thumbnailCompletion = ^(NSMutableArray *array, NSObject *respObject) {
         if(array.count == 0) {
         } else {
             YTYouTubeChannel *channel = array[0];

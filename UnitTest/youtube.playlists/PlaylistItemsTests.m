@@ -33,7 +33,7 @@
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 
-    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+    YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         blockResponseObject = array;
         id object = array[0];
         NSString *itemThumbnails = [YoutubeParser getPlayListItemThumbnails:object];

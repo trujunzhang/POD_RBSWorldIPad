@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self fetchVideoListWithPlayListID];
+
     [self makeCollectionView];
     [self setUICollectionView:self.collectionView];
 }
@@ -175,16 +177,17 @@
 #pragma mark
 
 - (void)fetchVideoListWithPlayListID {
-    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
-
+    YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
+        NSString *debug = @"debug";
+        self.videoList = [array mutableCopy];
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
-
+        NSString *debug = @"debug";
     };
     NSString *playlistId = @
-            "PLbMVogVj5nJSC_ZwkvUv15g6lYrNNMI9M,"//
-            "PLbMVogVj5nJSEQYH2dVtcXN9I4n8hF0VY"
-            "PLbMVogVj5nJQNzJT6sYZpB7H1G6WF0FZ4"
+//            "PLbMVogVj5nJSC_ZwkvUv15g6lYrNNMI9M,"//
+//            "PLbMVogVj5nJSEQYH2dVtcXN9I4n8hF0VY"
+//            "PLbMVogVj5nJQNzJT6sYZpB7H1G6WF0FZ4"
             "PLbMVogVj5nJSl_2XmFjuRmvuAgCOZXUjv";
     NSURLSessionDataTask *task = [[GYoutubeHelper getInstance] fetchVideoListWithPlayListID:playlistId completionHandler:completionBlock errorHandler:errorBlock];
 }

@@ -29,7 +29,7 @@
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 
-    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+    YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         blockResponseObject = array;
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
@@ -56,7 +56,7 @@
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 
-    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+    YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         blockResponseObject = array;
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
@@ -74,7 +74,7 @@
     __block NSArray *blockResponseObject = nil;
     __block id blockError = nil;
 
-    YoutubeResponseBlock completionBlock = ^(NSArray *array, NSObject *respObject) {
+    YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         blockResponseObject = array;
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
