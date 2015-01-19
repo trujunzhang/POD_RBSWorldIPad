@@ -47,7 +47,6 @@
 
 - (void)pushYoutubeVideoListViewController {
     YoutubeVideoListViewController *youtubeVideoListViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"YoutubeVideoListViewController"];
-    youtubeVideoListViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
     [_navigationController pushViewController:youtubeVideoListViewController animated:YES];
 }
 

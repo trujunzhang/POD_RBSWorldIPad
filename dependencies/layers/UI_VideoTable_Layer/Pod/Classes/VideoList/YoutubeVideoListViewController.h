@@ -15,4 +15,9 @@
 
 @property (nonatomic, strong) NSMutableArray *videoList;
 
+
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+
+
 @end

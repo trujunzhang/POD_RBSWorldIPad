@@ -26,16 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"Youtube channel nptelhrd Video List";
+
+    self.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
     NSAssert(self.numbersPerLineArray, @"not found numbersPerLineArray!");
+
+    self.activityIndicator.hidesWhenStopped = YES;
+//    self.activityIndicator.backgroundColor = [UIColor blackColor];
+    self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    [self.activityIndicator startAnimating];
 
     [self fetchVideoListWithPlayListID];
 
     [self makeCollectionView];
     [self setUICollectionView:self.collectionView];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
 }
 
 
@@ -52,6 +56,7 @@
 
 - (void)setUICollectionView:(UICollectionView *)collectionView {
     [self.view addSubview:collectionView];
+    [self.view sendSubviewToBack:collectionView];
 
     collectionView.backgroundView = [ClientUIHelper mainUIBackgroundView:self.view.bounds];
     collectionView.showsVerticalScrollIndicator = NO;
@@ -184,7 +189,8 @@
     YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         NSString *debug = @"debug";
         self.videoList = [array mutableCopy];
-        [self.collectionView reloadData];
+//        [self.collectionView reloadData];
+        [self.activityIndicator stopAnimating];
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
         NSString *debug = @"debug";
