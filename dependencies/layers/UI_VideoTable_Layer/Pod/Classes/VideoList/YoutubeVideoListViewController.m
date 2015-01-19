@@ -71,7 +71,7 @@
         self.layout.sectionInset = [self getUIEdgeInsetsForLayout];
 //      self.layout.footerHeight = DEFAULT_LOADING_MORE_HEIGHT;
 //      self.layout.minimumColumnSpacing = LAYOUT_MINIMUMCOLUMNSPACING;
-        self.layout.minimumInteritemSpacing = 10;
+        self.layout.minimumInteritemSpacing = 1;
 //      self.layout.delegate = self;
 
         self.collectionView = [[ASCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
