@@ -8,4 +8,6 @@
 - (void)registerNavigationController:(UINavigationController *)navigationController;
 
 - (void)pushLoginViewController;
+
+- (void)pushYoutubeVideoListViewController;
 @end

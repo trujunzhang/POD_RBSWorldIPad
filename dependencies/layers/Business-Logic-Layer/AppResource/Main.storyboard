@@ -32,7 +32,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Wrc-lb-GOB"/>
                     <connections>
-                        <outlet property="splashscreenBgViewer" destination="zXa-sw-0Lb" id="e4n-3n-nhg"/>
+                        <outlet property="backgroundImageView" destination="zXa-sw-0Lb" id="e4n-3n-nhg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soh-bi-yOg" userLabel="First Responder" sceneMemberID="firstResponder"/>

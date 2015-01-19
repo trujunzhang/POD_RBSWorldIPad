@@ -9,7 +9,7 @@
 
 @interface RBSWorldViewController () {
 
-    IBOutlet UIImageView *splashscreenBgViewer;
+    IBOutlet UIImageView *backgroundImageView;
 }
 @end
 
@@ -41,9 +41,9 @@
     BOOL isPortrait = (toInterfaceOrientation == UIInterfaceOrientationPortrait) || (toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 
     if(isPortrait) {
-        splashscreenBgViewer.image = [UIImage imageNamed:@"Default-Portrait.png"];
+        backgroundImageView.image = [UIImage imageNamed:@"Default-Portrait.png"];
     } else {
-        splashscreenBgViewer.image = [UIImage imageNamed:@"Default-Landscape.png"];
+        backgroundImageView.image = [UIImage imageNamed:@"Default-Landscape.png"];
     }
 }
 
