@@ -189,7 +189,7 @@
     YoutubeResponseBlock completionBlock = ^(NSMutableArray *array, NSObject *respObject) {
         NSString *debug = @"debug";
         self.videoList = [array mutableCopy];
-//        [self.collectionView reloadData];
+        [self.collectionView reloadData];
         [self.activityIndicator stopAnimating];
     };
     ErrorResponseBlock errorBlock = ^(NSError *error) {
