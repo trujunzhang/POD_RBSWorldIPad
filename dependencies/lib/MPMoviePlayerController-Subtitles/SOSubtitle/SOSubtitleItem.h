@@ -29,9 +29,9 @@ typedef struct {
 @property (copy, nonatomic) NSString *text;
 @property (copy, nonatomic) NSAttributedString *attributedText;
 
-@property(readonly, getter = startTimeString) NSString *startTimeString;
-@property(readonly, getter = endTimeString) NSString *endTimeString;
-@property(readonly) NSString *uniqueID;
+@property (readonly, getter = startTimeString) NSString *startTimeString;
+@property (readonly, getter = endTimeString) NSString *endTimeString;
+@property (readonly) NSString *uniqueID;
 
 @property (nonatomic) CGRect frame;
 
@@ -40,29 +40,34 @@ typedef struct {
                          end:(SOSubtitleTime)endTime;
 
 // Without milliseconds!
--(NSString *)startTimeString;
--(NSString *)endTimeString;
+- (NSString *)startTimeString;
+
+- (NSString *)endTimeString;
 
 // SRT timecode strings
--(NSString *)startTimecodeString;
--(NSString *)endTimecodeString;
+- (NSString *)startTimecodeString;
 
--(NSString *)convertCMTimeToString:(CMTime)theTime;
+- (NSString *)endTimecodeString;
 
--(NSString *)positionString;
+- (NSString *)convertCMTimeToString:(CMTime)theTime;
 
--(NSString *)description;
+- (NSString *)positionString;
 
--(NSInteger)startTimeInSeconds;
--(NSInteger)endTimeInSeconds;
+- (NSString *)description;
+
+- (NSInteger)startTimeInSeconds;
+
+- (NSInteger)endTimeInSeconds;
 
 // These methods are for development only due to the issues involving floating-point arithmetic.
--(double)startTimeDouble;
--(double)endTimeDouble;
+- (double)startTimeDouble;
 
--(void)setStartTimeFromString:(NSString *)timecodeString;
--(void)setEndTimeFromString:(NSString *)timecodeString;
+- (double)endTimeDouble;
 
--(BOOL)containsString:(NSString *)str;
+- (void)setStartTimeFromString:(NSString *)timecodeString;
+
+- (void)setEndTimeFromString:(NSString *)timecodeString;
+
+- (BOOL)containsString:(NSString *)str;
 
 @end

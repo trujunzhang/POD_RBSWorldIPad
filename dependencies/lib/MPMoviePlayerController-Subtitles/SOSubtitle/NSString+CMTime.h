@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CMTime.h>
 
-extern NSString * srtTimecodeStringForCMTime(CMTime time);
+extern NSString *srtTimecodeStringForCMTime(CMTime time);
 
 @interface NSString (CMTime)
 

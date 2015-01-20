@@ -20,12 +20,12 @@ typedef NS_ENUM(NSUInteger, YKQualityOptions) {
 @required
 
 /**
-This is a blocking call, wont return till detailVideo info has been parsed. To avoid blocking behavor, use init and call parseURL to parse detailVideo url
+This is a blocking call, wont return till video info has been parsed. To avoid blocking behavor, use init and call parseURL to parse video url
 */
 - (instancetype)initWithContent:(NSURL *)contentURL;
 
 /**
-Loads detailVideo info and parses direct urls to detailVideo and thumbnail images
+Loads video info and parses direct urls to video and thumbnail images
 */
 - (void)parseWithCompletion:(void (^)(NSError *error))callback;
 
@@ -35,12 +35,12 @@ Thumbnail image for given quality
 - (void)thumbImage:(YKQualityOptions)quality completion:(void (^)(UIImage *thumbImage, NSError *error))callback;
 
 /**
-Direct url to the detailVideo for given quality
+Direct url to the video for given quality
 */
 - (NSURL *)videoURL:(YKQualityOptions)quality;
 
 /**
-Plays detailVideo for a given quality in a modal window
+Plays video for a given quality in a modal window
 */
 - (void)play:(YKQualityOptions)quality;
 

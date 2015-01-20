@@ -12,14 +12,14 @@
 
 #pragma mark - Initialization
 
-- (id) initWithData:(NSDictionary *) nodeData{
+- (id)initWithData:(NSDictionary *)nodeData {
     return nil;
 }
 
-- (id) initWithIndex:(NSInteger) nodeIndex
-        andBeginTime:(NSTimeInterval) nodeBeginTime
-          andEndTime:(NSTimeInterval) nodeEndTime
-         andNodeText:(NSString *) text{
+- (id)initWithIndex:(NSInteger)nodeIndex
+       andBeginTime:(NSTimeInterval)nodeBeginTime
+         andEndTime:(NSTimeInterval)nodeEndTime
+        andNodeText:(NSString *)text {
     return nil;
 }
 

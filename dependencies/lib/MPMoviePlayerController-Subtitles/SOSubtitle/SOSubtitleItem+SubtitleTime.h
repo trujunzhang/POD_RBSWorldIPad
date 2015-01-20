@@ -10,7 +10,7 @@
 
 @interface SOSubtitleItem (SubtitleTime)
 
-+ (CMTime)convertSecondsMilliseconds:(int) seconds toCMTime:(int)milliseconds;
++ (CMTime)convertSecondsMilliseconds:(int)seconds toCMTime:(int)milliseconds;
 
 + (int)totalSecondsForHours:(int)hours minutes:(int)minutes seconds:(int)seconds;
 

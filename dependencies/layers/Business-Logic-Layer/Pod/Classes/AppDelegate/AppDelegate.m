@@ -7,9 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginViewController.h"
 #import "MxTabBarManager.h"
-
 
 @interface AppDelegate ()
 
@@ -21,7 +19,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     [[MxTabBarManager sharedTabBarManager] registerNavigationController:navigationController];
 

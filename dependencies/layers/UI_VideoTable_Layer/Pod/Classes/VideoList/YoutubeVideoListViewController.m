@@ -69,10 +69,7 @@
         self.layout = [[UICollectionViewFlowLayout alloc] init];
 
         self.layout.sectionInset = [self getUIEdgeInsetsForLayout];
-//      self.layout.footerHeight = DEFAULT_LOADING_MORE_HEIGHT;
-//      self.layout.minimumColumnSpacing = LAYOUT_MINIMUMCOLUMNSPACING;
         self.layout.minimumInteritemSpacing = 1;
-//      self.layout.delegate = self;
 
         self.collectionView = [[ASCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
         self.collectionView.asyncDataSource = self;
@@ -125,38 +122,14 @@
 
 
 - (ASCellNode *)collectionView:(ASCollectionView *)collectionView nodeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ASCellNode *node = [self getCellNodeAtIndexPath:indexPath];
-
-    return node;
-}
-
-
-- (ASCellNode *)getCellNodeAtIndexPath:(NSIndexPath *)indexPath {
-    ASCellNode *node;
-
-    node = [[YTAsCollectionChannelCellNode alloc]
+    return [[YTAsCollectionChannelCellNode alloc]
             initWithCellNodeOfSize:[self cellSize]
                          withVideo:[self.videoList objectAtIndex:indexPath.row]];
-
-    return node;
 }
 
 
 #pragma mark -
 #pragma mark  UICollectionViewDelegate
-
-
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//   NSString * debug = @"debug";
-//}
-
-
-#pragma mark - CHTCollectionViewDelegateWaterfallLayout
-
-
-//- (CGSize)collectionWaterfallView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    return [self cellSize];
-//}
 
 
 - (CGSize)cellSize {

@@ -11,16 +11,18 @@
 @interface JPSRTParserNode : NSObject
 
 #pragma mark - Properties
-@property (nonatomic, assign)   NSUInteger        index;
-@property (nonatomic, assign)   NSTimeInterval    beginTime;
-@property (nonatomic, assign)   NSTimeInterval    endTime;
-@property (nonatomic, copy)     NSString*         nodeText;
+@property (nonatomic, assign) NSUInteger index;
+@property (nonatomic, assign) NSTimeInterval beginTime;
+@property (nonatomic, assign) NSTimeInterval endTime;
+@property (nonatomic, copy) NSString *nodeText;
 
 #pragma mark - Methods
-- (id) initWithData:(NSDictionary *) nodeData;
-- (id) initWithIndex:(NSInteger) nodeIndex
-        andBeginTime:(NSTimeInterval) nodeBeginTime
-          andEndTime:(NSTimeInterval) nodeEndTime
-         andNodeText:(NSString *) text;
+
+- (id)initWithData:(NSDictionary *)nodeData;
+
+- (id)initWithIndex:(NSInteger)nodeIndex
+       andBeginTime:(NSTimeInterval)nodeBeginTime
+         andEndTime:(NSTimeInterval)nodeEndTime
+        andNodeText:(NSString *)text;
 
 @end

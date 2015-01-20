@@ -10,4 +10,6 @@
 - (void)pushLoginViewController;
 
 - (void)pushYoutubeVideoListViewController;
+
+- (void)presentYouTubeVideoToPlay:(NSString *)videoID;
 @end

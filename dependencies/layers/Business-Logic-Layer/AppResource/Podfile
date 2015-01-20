@@ -17,6 +17,8 @@ end
 target 'RBSWorldIPad', :exclusive => true do
   import_pods
 
+# ________________TestFlight library___________________
+
 # ________________collect common library___________________
   pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"
 
@@ -25,7 +27,6 @@ target 'RBSWorldIPad', :exclusive => true do
   pod 'Reveal-iOS-SDK'
   pod 'pop'
   pod 'SDWebImage'
-
 
   pod 'ISMemoryCache'
   pod 'Bolts'

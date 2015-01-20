@@ -11,40 +11,43 @@
 /*
  * Posted when SRT file has been downloaded.
  */
-extern NSString * const JPSRTFileAvailableNotification;
+extern NSString *const JPSRTFileAvailableNotification;
 
 /*
  * Posted when SRT file can't load.
  */
-extern NSString * const JPErrorGetSRTFileNotification;
+extern NSString *const JPErrorGetSRTFileNotification;
 
 /*
  * Posted when SRT parsing process fail
  */
-extern NSString * const JPErrorParsingSRTNotification;
+extern NSString *const JPErrorParsingSRTNotification;
 
 typedef NS_ENUM(NSUInteger, JPSRTParsingState) {
     JPSRTParsingStateCompleted,
     JPSRTParsingStateFailed
 };
 
-typedef void (^JPSRTParserCompletionBlock)(JPSRTParsingState status, NSArray* subtitles);
+typedef void (^JPSRTParserCompletionBlock)(JPSRTParsingState status, NSArray *subtitles);
 
 @interface JPSRTParser : NSObject
 
 #pragma mark - Properties
-@property (nonatomic, copy)     NSString* srtFilePath;
-@property (nonatomic, copy)     NSURL* srtURL;
-@property (nonatomic, copy)     NSString* srtStringValue;
-@property (nonatomic, copy)     NSDateFormatter* dateFormatter;;
-@property (nonatomic, copy)     JPSRTParserCompletionBlock completionBlock;
-@property (nonatomic, assign)   NSStringEncoding srtEncodeType;
+@property (nonatomic, copy) NSString *srtFilePath;
+@property (nonatomic, copy) NSURL *srtURL;
+@property (nonatomic, copy) NSString *srtStringValue;
+@property (nonatomic, copy) NSDateFormatter *dateFormatter;;
+@property (nonatomic, copy) JPSRTParserCompletionBlock completionBlock;
+@property (nonatomic, assign) NSStringEncoding srtEncodeType;
 
 #pragma mark - Methods
-- (id) initWithContentOfSRTFile:(NSString *) srtFilePath;
-- (id) initWithContentOfSRTURL:(NSURL *) srtURL;
 
-- (NSArray *) parse;
-- (void) parseCompletion:(JPSRTParserCompletionBlock)completionBlock;
+- (id)initWithContentOfSRTFile:(NSString *)srtFilePath;
+
+- (id)initWithContentOfSRTURL:(NSURL *)srtURL;
+
+- (NSArray *)parse;
+
+- (void)parseCompletion:(JPSRTParserCompletionBlock)completionBlock;
 
 @end

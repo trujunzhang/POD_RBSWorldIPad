@@ -7,6 +7,8 @@
 //
 
 
+#import "YoutubeConstants.h"
+
 @interface YoutubeParser : NSObject
 
 + (NSString *)getVideoIdsByActivityList:(NSMutableArray *)searchResultList;
@@ -77,4 +79,6 @@
 + (NSString *)getPlayListItemThumbnails:(id)info;
 
 + (NSString *)getPlayListItemTitle:(id)info;
+
++ (NSString *)getPlayListItemVideoId:(YTYouTubePlaylistItem *)playListItem;
 @end

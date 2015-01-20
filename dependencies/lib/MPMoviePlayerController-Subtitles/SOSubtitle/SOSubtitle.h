@@ -17,7 +17,9 @@
 @property (readonly) NSUInteger totalCharacterCountOfText;
 
 - (BFTask *)subtitleFromFile:(NSString *)filePath;
+
 - (BFTask *)subtitleFromURL:(NSURL *)fileURL encoding:(NSStringEncoding)encoding error:(NSError *)error;
+
 - (BFTask *)subtitleWithString:(NSString *)str error:(NSError *)error;
 
 - (NSString *)description;

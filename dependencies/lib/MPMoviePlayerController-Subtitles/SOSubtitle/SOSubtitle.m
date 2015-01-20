@@ -27,21 +27,21 @@ typedef enum {
 @implementation SOSubtitle
 
 - (BFTask *)subtitleFromFile:(NSString *)filePath {
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+    if([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSStringEncoding encoding;
         NSError *error = nil;
         NSString *string = [[NSString alloc] initWithContentsOfFile:filePath
                                                        usedEncoding:&encoding
                                                               error:&error];
 
-        if ([error code] == NSFileReadUnknownStringEncodingError) { // couldn't determine file encoding
+        if([error code] == NSFileReadUnknownStringEncodingError) { // couldn't determine file encoding
             error = nil;
             string = [[NSString alloc] initWithContentsOfFile:filePath
                                                      encoding:NSISOLatin1StringEncoding
                                                         error:&error];
         }
 
-        if (string == nil) {
+        if(string == nil) {
             NSLog(@"%@", [error localizedDescription]);
             return [BFTask taskWithError:error];
         } else {
@@ -59,7 +59,7 @@ typedef enum {
                                              encoding:encoding
                                                 error:&error];
 
-    if (str == nil) return nil;
+    if(str == nil) return nil;
 
     return [self subtitleWithString:str error:error];
 }
@@ -67,15 +67,15 @@ typedef enum {
 - (BFTask *)subtitleWithString:(NSString *)str
                          error:(NSError *)error {
     BFTaskCompletionSource *taskCompletionSource = [BFTaskCompletionSource taskCompletionSource];
-    
+
     SOSubtitle *subtitle = [[SOSubtitle alloc] init];
 
-    if (subtitle) {
+    if(subtitle) {
         subtitle.subtitleItems = [NSMutableArray arrayWithCapacity:100];
         BOOL success = [subtitle _populateFromString:str
                                                error:&error];
 
-        if (!success) {
+        if(!success) {
             [taskCompletionSource setError:error];
         } else {
             [taskCompletionSource setResult:subtitle];
@@ -87,10 +87,11 @@ typedef enum {
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-function"
-NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
+
+NS_INLINE NSString *convertSubViewerLineBreaks(NSString *currentText) {
     NSUInteger currentTextLength = currentText.length;
 
-    if (currentTextLength == 0) return currentText;
+    if(currentTextLength == 0) return currentText;
 
     NSRange currentTextRange = NSMakeRange(0, currentTextLength);
     NSString *subViewerLineBreak = @"[br]";
@@ -98,9 +99,9 @@ NS_INLINE NSString * convertSubViewerLineBreaks(NSString *currentText) {
                                                          options:NSLiteralSearch
                                                            range:currentTextRange];
 
-    if (subViewerLineBreakRange.location != NSNotFound) {
+    if(subViewerLineBreakRange.location != NSNotFound) {
         NSRange subViewerLineBreakSearchRange = NSMakeRange(subViewerLineBreakRange.location,
-                                                            (currentTextRange.length - subViewerLineBreakRange.location));
+                (currentTextRange.length - subViewerLineBreakRange.location));
 
         currentText = [currentText stringByReplacingOccurrencesOfString:subViewerLineBreak
                                                              withString:@"\n"
@@ -142,9 +143,9 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
     {
         NSCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet];
         BOOL ok = ([scanner scanUpToCharactersFromSet:newlineCharacterSet intoString:NULL] &&
-                   [scanner scanCharactersFromSet:newlineCharacterSet intoString:&linebreakString]);
+                [scanner scanCharactersFromSet:newlineCharacterSet intoString:&linebreakString]);
 
-        if (ok == NO) {
+        if(ok == NO) {
             NSLog(@"Parse error in SRT string: no line break found!");
             linebreakString = @"\n";
         }
@@ -164,8 +165,8 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
         NSString *subText;
         NSMutableArray *subTextLines;
         NSString *subTextLine;
-        SOSubtitleTime start = { -1, -1, -1, -1 };
-        SOSubtitleTime end = { -1, -1, -1, -1 };
+        SOSubtitleTime start = {-1, -1, -1, -1};
+        SOSubtitleTime end = {-1, -1, -1, -1};
         BOOL hasPosition = NO;
         SOSubtitlePosition position;
         int subtitleNr_;
@@ -173,71 +174,71 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
         subtitleNr++;
 
         BOOL ok = ([scanner scanInt:&subtitleNr_] && SCAN_LINEBREAK() &&
-                   // Start time
-                   [scanner scanInt:&start.hours] && SCAN_STRING(@":") &&
-                   [scanner scanInt:&start.minutes] && SCAN_STRING(@":") &&
-                   [scanner scanInt:&start.seconds] &&
-                   ((
+                // Start time
+                        [scanner scanInt:&start.hours] && SCAN_STRING(@":") &&
+                [scanner scanInt:&start.minutes] && SCAN_STRING(@":") &&
+                [scanner scanInt:&start.seconds] &&
+                ((
 #if SUBVIEWER_SUPPORT
                         (SCAN_STRING(@",") || SCAN_STRING(@".")) &&
 #else
                         SCAN_STRING(@",") &&
 #endif
-                        [scanner scanInt:&start.milliseconds]
-                        ) || YES) // We either find milliseconds or we ignore them.
-                   &&
+                                [scanner scanInt:&start.milliseconds]
+                ) || YES) // We either find milliseconds or we ignore them.
+                        &&
 
-                   // Start/End separator
+                // Start/End separator
 #if SUBVIEWER_SUPPORT
                    (SCAN_STRING(@"-->") || SCAN_STRING(@",")) &&
 #else
-                   SCAN_STRING(@"-->") && // We are skipping whitepace!
+                SCAN_STRING(@"-->") && // We are skipping whitepace!
 #endif
 
-                   // End time
-                   [scanner scanInt:&end.hours] && SCAN_STRING(@":") &&
-                   [scanner scanInt:&end.minutes] && SCAN_STRING(@":") &&
-                   [scanner scanInt:&end.seconds] &&
-                   ((
+                // End time
+                [scanner scanInt:&end.hours] && SCAN_STRING(@":") &&
+                [scanner scanInt:&end.minutes] && SCAN_STRING(@":") &&
+                [scanner scanInt:&end.seconds] &&
+                ((
 #if SUBVIEWER_SUPPORT
                         (SCAN_STRING(@",") || SCAN_STRING(@".")) &&
 #else
                         SCAN_STRING(@",") &&
 #endif
-                        [scanner scanInt:&end.milliseconds]
-                        ) || YES) // We either find milliseconds or we ignore them.
-                   &&
+                                [scanner scanInt:&end.milliseconds]
+                ) || YES) // We either find milliseconds or we ignore them.
+                        &&
 
-                   // Optional position
-                   (
-                       SCAN_LINEBREAK() ||
-                       ( // If there is no line break, this could be position information.
-                           [scanner scanString:@"X1:" intoString:NULL] &&
-                           [scanner scanInt:&position.x1] &&
-                           [scanner scanString:@"X2:" intoString:NULL] &&
-                           [scanner scanInt:&position.x2] &&
-                           [scanner scanString:@"Y1:" intoString:NULL] &&
-                           [scanner scanInt:&position.y1] &&
-                           [scanner scanString:@"Y2:" intoString:NULL] &&
-                           [scanner scanInt:&position.y2] &&
-                           SCAN_LINEBREAK() &&
-                           (hasPosition = YES))
-                   )
-                   &&
+                // Optional position
+                        (
+                                SCAN_LINEBREAK() ||
+                                        ( // If there is no line break, this could be position information.
+                                                [scanner scanString:@"X1:" intoString:NULL] &&
+                                                        [scanner scanInt:&position.x1] &&
+                                                        [scanner scanString:@"X2:" intoString:NULL] &&
+                                                        [scanner scanInt:&position.x2] &&
+                                                        [scanner scanString:@"Y1:" intoString:NULL] &&
+                                                        [scanner scanInt:&position.y1] &&
+                                                        [scanner scanString:@"Y2:" intoString:NULL] &&
+                                                        [scanner scanInt:&position.y2] &&
+                                                        SCAN_LINEBREAK() &&
+                                                        (hasPosition = YES))
+                        )
+                        &&
 
-                   // Subtitle text
-                   (
-                       [scanner scanUpToString:linebreakString intoString:&subTextLine] || // We either find subtitle text…
-                       (subTextLine = @"") // … or we assume empty text.
-                   )
-                   &&
+                // Subtitle text
+                        (
+                                [scanner scanUpToString:linebreakString intoString:&subTextLine] || // We either find subtitle text…
+                                        (subTextLine = @"") // … or we assume empty text.
+                        )
+                        &&
 
-                   // End of event
-                   (SCAN_LINEBREAK() || [scanner isAtEnd])
-                   );
+                // End of event
+                        (SCAN_LINEBREAK() || [scanner isAtEnd])
+        );
 
-        if (!ok) {
-            if (error != NULL) {
+        if(!ok) {
+            if(error != NULL) {
                 const NSUInteger contextLength = 20;
                 NSUInteger strLength = str.length;
                 NSUInteger errorLocation = [scanner scanLocation];
@@ -253,17 +254,17 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
                 NSString *afterError = [str substringWithRange:afterRange];
 
                 NSString *errorDescription = [NSString stringWithFormat:NSLocalizedString(@"The SRT subtitles could not be parsed: error in subtitle #%d (line %d):\n%@<HERE>%@", @"Cannot parse SRT file"),
-                                              subtitleNr, lineNr, beforeError, afterError];
+                                                                        subtitleNr, lineNr, beforeError, afterError];
                 NSDictionary *errorDetail = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             errorDescription, NSLocalizedDescriptionKey,
-                                             nil];
+                        errorDescription, NSLocalizedDescriptionKey,
+                                nil];
                 *error = [NSError errorWithDomain:SOSubtitlesErrorDomain code:kCouldNotParseSRT userInfo:errorDetail];
             }
 
             return NO;
         }
 
-        if (subtitleNr != subtitleNr_) {
+        if(subtitleNr != subtitleNr_) {
             NSLog(@"Subtitle # mismatch (line %d): got %d, expected %d. ", lineNr, subtitleNr_, subtitleNr);
             subtitleNr = subtitleNr_;
         }
@@ -278,7 +279,7 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
         while ([scanner scanUpToString:linebreakString intoString:&subTextLine] && (SCAN_LINEBREAK() || [scanner isAtEnd]))
             [subTextLines addObject:subTextLine];
 
-        if (subTextLines.count == 1) {
+        if(subTextLines.count == 1) {
             subText = [subTextLines objectAtIndex:0];
             subText = [subText stringByReplacingOccurrencesOfString:@"|"
                                                          withString:@"\n"
@@ -296,19 +297,19 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
 
             NSRange tagStartRange = [subText rangeOfString:tagStart options:NSLiteralSearch range:searchRange];
 
-            if (tagStartRange.location != NSNotFound) {
+            if(tagStartRange.location != NSNotFound) {
                 searchRange = NSMakeRange(tagStartRange.location, subText.length - tagStartRange.location);
                 NSMutableString *subTextMutable = [subText mutableCopy];
 
                 // Remove all
-                if (tagRe == nil) {
+                if(tagRe == nil) {
                     NSString *const tagPattern = @"\\{(\\\\|Y:)[^\\{]+\\}";
 
                     tagRe = [[NSRegularExpression alloc] initWithPattern:tagPattern
                                                                  options:0
                                                                    error:error];
 
-                    if (tagRe == nil) NSLog(@"%@", *error);
+                    if(tagRe == nil) NSLog(@"%@", *error);
                 }
 
                 [tagRe replaceMatchesInString:subTextMutable
@@ -324,7 +325,7 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
                                                               start:start
                                                                 end:end];
 
-        if (hasPosition) {
+        if(hasPosition) {
             item.frame = [SOSubtitleItem convertSubtitlePositionToCGRect:position];
         }
 
@@ -437,12 +438,12 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
         SOSubtitleItem *thisSub = [_subtitleItems objectAtIndex:mid];
         CMTime thisStartTime = thisSub.startTime;
 
-        if (CMTIME_COMPARE_INLINE(thisStartTime, <=, desiredTime)) {
+        if(CMTIME_COMPARE_INLINE(thisStartTime, <=, desiredTime)) {
             CMTime thisEndTime = thisSub.endTime;
 
-            if (CMTIME_COMPARE_INLINE(desiredTime, <, thisEndTime)) {
+            if(CMTIME_COMPARE_INLINE(desiredTime, <, thisEndTime)) {
                 // desiredTime in range.
-                if (index != NULL) *index = mid;
+                if(index != NULL) *index = mid;
 
                 return thisSub;
             } else {
@@ -450,14 +451,14 @@ NS_INLINE BOOL scanString(NSScanner *scanner, NSString *str) {
                 low = mid + 1;
             }
         } else { /*if (CMTIME_COMPARE_INLINE(subStartTime, >, desiredTime))*/
-            if (mid == 0) break;  // Nothing found.
+            if(mid == 0) break;  // Nothing found.
 
             // Continue search in lower *half*.
             high = mid - 1;
         }
     }
 
-    if (index != NULL) *index = NSNotFound;
+    if(index != NULL) *index = NSNotFound;
 
     return nil;
 }

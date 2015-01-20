@@ -11,8 +11,10 @@
 
 @interface YKYouTubeVideo : NSObject<YKVideo>
 
+@property (nonatomic, strong) MPMoviePlayerViewController *player;
+
 /**
-Vimeo detailVideo url
+Vimeo video url
 */
 @property (nonatomic, strong) NSURL *contentURL;
 
@@ -22,11 +24,5 @@ Available after parseWithCompletion is executed.
 */
 @property (nonatomic, strong) NSDictionary *videos;
 
-
-- (instancetype)initWithVideoId:(NSString *)videoId;
-
-- (void)playInView:(UIView *)pView withQualityOptions:(YKQualityOptions)quality;
-
-- (void)stop;
 
 @end

@@ -4,7 +4,7 @@
 //
 
 #import "YTAsFirstChannelRowNode.h"
-#import "YKDirectVideo.h"
+#import "MxTabBarManager.h"
 
 
 @interface YTAsFirstChannelRowNode () {
@@ -56,10 +56,8 @@
 }
 
 
-//YTYouTubePlayList
 - (void)buttonTapped:(id)buttonTapped {
-//    [[MxTabBarManager sharedTabBarManager] pushForYouTubePlayList:self.nodeInfo
-//                                                withPlayListTitle:[YoutubeParser getPlayListTitle:self.nodeInfo]];
+    [[MxTabBarManager sharedTabBarManager] presentYouTubeVideoToPlay:[YoutubeParser getPlayListItemVideoId:self.nodeInfo]];
 }
 
 @end

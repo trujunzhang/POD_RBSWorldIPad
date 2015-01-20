@@ -17,11 +17,11 @@
 
 - (instancetype)init {
     self = [super init];
-    
-    if (self != nil) {
+
+    if(self != nil) {
         _uniqueID = [[NSProcessInfo processInfo] globallyUniqueString];
     }
-    
+
     return self;
 }
 
@@ -29,15 +29,15 @@
                        start:(SOSubtitleTime)startTime
                          end:(SOSubtitleTime)endTime {
     self = [self init];
-    
-    if (self != nil) {
+
+    if(self != nil) {
         _text = text;
         _attributedText = [text HTMLString];
         _startTime = [SOSubtitleItem convertSubtitleTimeToCMTime:startTime];
         _endTime = [SOSubtitleItem convertSubtitleTimeToCMTime:endTime];
         _frame = CGRectZero;
     }
-    
+
     return self;
 }
 
@@ -56,12 +56,12 @@
     NSDate *date2 = [NSDate dateWithTimeInterval:seconds sinceDate:date1];
     NSCalendarUnit unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *converted = [[NSCalendar currentCalendar] components:unitFlags fromDate:date1 toDate:date2 options:0];
-    
+
     NSString *str = [NSString stringWithFormat:@"%02d:%02d:%02d",
-                     (int)[converted hour],
-                     (int)[converted minute],
-                     (int)[converted second]];
-    
+                                               (int)[converted hour],
+                                               (int)[converted minute],
+                                               (int)[converted second]];
+
     return str;
 }
 
@@ -74,15 +74,15 @@
 }
 
 - (NSString *)positionString {
-    if (CGRectIsEmpty(self.frame)) {
+    if(CGRectIsEmpty(self.frame)) {
         return @"";
     } else {
         SOSubtitlePosition position = [SOSubtitleItem convertCGRectToSubtitlePosition:self.frame];
         NSString *str = [NSString stringWithFormat:@"  X1:%d X2:%d Y1:%d Y2:%d",
-                         position.x1,
-                         position.x2,
-                         position.y1,
-                         position.y2];
+                                                   position.x1,
+                                                   position.x2,
+                                                   position.y1,
+                                                   position.y2];
         return str;
     }
 }
@@ -90,35 +90,35 @@
 - (NSString *)description {
     NSString *text = self.text;
     NSString *position = self.positionString;
-    
+
     return [NSString stringWithFormat:@"%@ ---> %@%@: %@", self.startTimecodeString, self.endTimecodeString, position, text];
 }
 
 - (BOOL)isEqual:(id)obj {
-    if (obj == nil) {
+    if(obj == nil) {
         return NO;
     }
-    
-    if (![obj isKindOfClass:[SOSubtitleItem class]]) {
+
+    if(![obj isKindOfClass:[SOSubtitleItem class]]) {
         return NO;
     }
-    
+
     SOSubtitleItem *other = (SOSubtitleItem *)obj;
-    
+
     id otherText = other.text;
-    
+
     return ((CMTimeCompare(other.startTime, self.startTime) == 0) &&
             (CMTimeCompare(other.endTime, self.endTime) == 0) &&
             ((otherText == self.text) || [otherText isEqualToString:self.text]));
 }
 
 - (BOOL)isEqualToSOSubtitleItem:(SOSubtitleItem *)other {
-    if (other == nil) {
+    if(other == nil) {
         return NO;
     }
-    
+
     id otherText = other.text;
-    
+
     return ((CMTimeCompare(other.startTime, self.startTime) == 0) &&
             (CMTimeCompare(other.endTime, self.endTime) == 0) &&
             ((otherText == self.text) || [otherText isEqualToString:self.text]));
@@ -150,15 +150,15 @@
 
 - (BOOL)containsString:(NSString *)str {
     NSRange searchResult = [self.text rangeOfString:str options:NSCaseInsensitiveSearch];
-    
-    if (searchResult.location == NSNotFound) {
-        if ([str length] < 9) {
+
+    if(searchResult.location == NSNotFound) {
+        if([str length] < 9) {
             searchResult = [[self startTimeString] rangeOfString:str options:NSCaseInsensitiveSearch];
-            
-            if (searchResult.location == NSNotFound) {
+
+            if(searchResult.location == NSNotFound) {
                 searchResult = [[self endTimeString] rangeOfString:str options:NSCaseInsensitiveSearch];
-                
-                if (searchResult.location == NSNotFound) {
+
+                if(searchResult.location == NSNotFound) {
                     return NO;
                 } else {
                     return YES;

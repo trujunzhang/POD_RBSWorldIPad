@@ -1,6 +1,7 @@
 #import "MxTabBarManager.h"
 #import "LoginViewController.h"
 #import "YoutubeVideoListViewController.h"
+#import "JZYoutubeVideo.h"
 
 
 @interface MxTabBarManager () {
@@ -51,4 +52,21 @@
 }
 
 
+- (void)presentYouTubeVideoToPlay:(NSString *)videoID {
+    JZYoutubeVideo *youTubeVideo = [[JZYoutubeVideo alloc] initWithVideoId:videoID];
+
+    //Then play (make sure that you have called parseWithCompletion before calling this method)
+    [youTubeVideo parseWithCompletion:^(NSError *error) {
+        [youTubeVideo playAuto:YKQualityLow];
+    }];
+
+}
+
+- (void)presentYouTubeVideoToPlay123:(NSString *)videoID {
+    JZYoutubeVideo *youTubeVideo = [[JZYoutubeVideo alloc] initWithVideoId:videoID];
+
+    [youTubeVideo parseWithCompletion:^(NSError *error) {
+        [youTubeVideo play:YKQualityMedium];
+    }];
+}
 @end

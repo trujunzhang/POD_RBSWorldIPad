@@ -323,4 +323,8 @@
 + (NSString *)getPlayListItemTitle:(YTYouTubePlaylistItem *)playListItem {
     return playListItem.snippet.title;
 }
+
++ (NSString *)getPlayListItemVideoId:(YTYouTubePlaylistItem *)playListItem {
+    return playListItem.snippet.resourceId.videoId;
+}
 @end

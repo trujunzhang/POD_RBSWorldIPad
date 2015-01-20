@@ -13,8 +13,8 @@
 + (CMTime)convertSecondsMilliseconds:(int)seconds toCMTime:(int)milliseconds {
     CMTime secondsTime = CMTimeMake(seconds, 1);
     CMTime millisecondsTime;
-    
-    if (milliseconds == -1) {
+
+    if(milliseconds == -1) {
         return secondsTime;
     } else {
         millisecondsTime = CMTimeMake(milliseconds, 1000);
@@ -33,7 +33,7 @@
                                                     seconds:subtitleTime.seconds];
     CMTime time = [SOSubtitleItem convertSecondsMilliseconds:totalSeconds
                                                     toCMTime:subtitleTime.milliseconds];
-    
+
     return time;
 }
 

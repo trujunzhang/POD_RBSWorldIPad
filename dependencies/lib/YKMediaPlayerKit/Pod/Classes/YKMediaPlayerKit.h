@@ -32,22 +32,22 @@ typedef NS_ENUM(NSUInteger, YKVideoTypeOptions) {
 #pragma mark - Instance Methods
 
 /**
-Initializer that takes YouTube/Vimeo/MP4/MOV detailVideo URL
+Initializer that takes YouTube/Vimeo/MP4/MOV video URL
 */
 - (instancetype)initWithURL:(NSURL *)contentURL;
 
 /**
-Loads detailVideo info and parses direct urls to detailVideo and thumbnail images
+Loads video info and parses direct urls to video and thumbnail images
 */
 - (void)parseWithCompletion:(void (^)(YKVideoTypeOptions videoType, id<YKVideo> video, NSError *error))callback;
 
 /**
-Loads detailVideo info and plays it in modal play view controller
+Loads video info and plays it in modal play view controller
 */
 - (void)playWithCompletion:(void (^)(YKVideoTypeOptions videoType, id<YKVideo> video, NSError *error))callback;
 
 /**
-Loads detailVideo thumbnail
+Loads video thumbnail
 */
 - (void)thumbWithCompletion:(void (^)(UIImage *thumb, NSError *error))callback;
 
@@ -55,17 +55,17 @@ Loads detailVideo thumbnail
 #pragma mark - Class Methods
 
 /**
-Loads detailVideo info and parses direct urls to detailVideo and thumbnail images
+Loads video info and parses direct urls to video and thumbnail images
 */
 + (void)parse:(NSURL *)contentURL completion:(void (^)(YKVideoTypeOptions, id<YKVideo>, NSError *))callback;
 
 /**
-Loads detailVideo info and plays it in modal play view controller
+Loads video info and plays it in modal play view controller
 */
 + (void)play:(NSURL *)contentURL quality:(YKQualityOptions)quality completion:(void (^)(YKVideoTypeOptions, id<YKVideo>, NSError *))callback;
 
 /**
-Loads detailVideo thumbnail
+Loads video thumbnail
 */
 + (void)thumb:(NSURL *)contentURL quality:(YKQualityOptions)quality completion:(void (^)(UIImage *thumb, NSError *))callback;
 

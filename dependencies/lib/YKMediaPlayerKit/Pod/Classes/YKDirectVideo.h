@@ -12,7 +12,7 @@
 @interface YKDirectVideo : NSObject<YKVideo>
 
 /**
-Vimeo detailVideo url
+Vimeo video url
 */
 @property (nonatomic, strong) NSURL *contentURL;
 

@@ -4,15 +4,9 @@
 //
 
 #import "YTAsFirstVideoRowNode.h"
-#import "YKDirectVideo.h"
-#import "ASNetworkImageNode.h"
-#import "ASDisplayNodeExtras.h"
-//#import "MPMoviePlayerController+Subtitles.h"
-
 
 @interface YTAsFirstVideoRowNode () {
     ASNetworkImageNode *_videoCoverThumbnailsNode;
-    YKDirectVideo *_directVideo;
 }
 
 @end
@@ -59,17 +53,7 @@
 
 
 - (void)buttonTapped:(id)buttonTapped {
-//    NSString *string = [[YoutubeParser getVideoOnlineUrl:self.nodeInfo] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    _directVideo = [[YKDirectVideo alloc] initWithContent:[NSURL URLWithString:string]];
-//
-//    SubtitleResponseBlock subtitleResponseBlock = ^(NSURL *responseString, NSError *error) {
-//        NSString *localSRTPath = [responseString relativePath];
-//        if(error)
-//            localSRTPath = nil;
-//        [_directVideo play:YKQualityLow subtitlesPathStr:localSRTPath];
-//    };
-//    [[GYoutubeHelper getInstance] fetchingSubtitle:subtitleResponseBlock
-//                                           withUrl:[NSString stringWithFormat:@"%@.%@", [string stringByDeletingPathExtension], @"srt"]];
+
 }
 
 @end
