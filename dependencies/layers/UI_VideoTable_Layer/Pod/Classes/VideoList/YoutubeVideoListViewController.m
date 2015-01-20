@@ -51,6 +51,13 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+
 #pragma mark -
 #pragma mark make asCollectionView
 
